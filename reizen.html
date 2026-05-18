@@ -3,10 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/stylesheet.css">
-    <title>Horizont Reizen</title>
+    <title>Reizen — Horizont Reizen</title>
 </head>
 <body>
-    
+    <header class="header">
+        <div class="header-content">
+            <div class="logo-section">
+                <div class="logo">Horizont Reizen</div>
+                <div class="logo-tagline">JOUW WERELD, JOUW KOERS</div>
+            </div>
+            <nav class="nav">
+                <a href="index.html">Home</a>
+                <a href="reizen.html" class="nav-active">Reizen</a>
+                <a href="#">Over ons</a>
+                <a href="#">Contact</a>
+            </nav>
+            <div class="auth-buttons">
+                <a href="#" class="btn-login">Inloggen</a>
+                <a href="#" class="btn-signup">Account aanmaken</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="search-section">
+        <div class="search-form">
+            <div class="form-group">
+                <label for="destination">Bestemming</label>
+                <input type="text" id="destination" placeholder="Waar wil je heen?">
+            </div>
+            <div class="form-group">
+                <label for="departure">Vertrek vanaf</label>
+                <input type="date" id="departure">
+            </div>
+            <div class="form-group">
+                <label for="flexible">Flexibel</label>
+                <select id="flexible">
+                    <option>Exacte datum</option>
+                    <option>± 1 dag</option>
+                    <option>± 3 dagen</option>
+                    <option>± 1 week</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="persons">Personen</label>
+                <select id="persons">
+                    <option>1</option>
+                    <option selected>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6+</option>
+                </select>
+            </div>
+            <button class="search-btn">Zoeken</button>
+        </div>
+    </section>
 </body>
 </html>

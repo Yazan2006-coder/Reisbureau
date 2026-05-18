@@ -60,6 +60,11 @@ body {
     color: #ffc107;
 }
 
+.nav a.nav-active {
+    color: #ffc107;
+    font-weight: 600;
+}
+
 .auth-buttons {
     display: flex;
     gap: 1rem;
@@ -136,15 +141,21 @@ body {
     max-width: 500px;
 }
 
+.search-section {
+    background-color: #f0ece4;
+    padding: 1.5rem 2rem;
+}
+
 .search-form {
     background-color: white;
-    padding: 2rem;
+    padding: 1.5rem 2rem;
     border-radius: 8px;
     display: flex;
     gap: 1.5rem;
-    margin-bottom: 2rem;
     align-items: flex-end;
     flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .form-group {
@@ -170,6 +181,20 @@ body {
 }
 
 .form-group input:focus {
+    outline: none;
+    border-color: #1b3a52;
+}
+
+.form-group select {
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    background-color: white;
+    cursor: pointer;
+}
+
+.form-group select:focus {
     outline: none;
     border-color: #1b3a52;
 }
