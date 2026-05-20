@@ -725,3 +725,35 @@ img{
     color: rgba(255, 255, 255, 0.6);
     font-size: 0.85rem;
 }
+.scroll-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background-color: #1b3a52;
+    color: white;
+    border: none;
+    padding: 1rem 1.25rem;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 999;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.scroll-to-top:hover {
+    background-color: #ffc107;
+    color: #1b3a52;
+    transform: translateY(-5px);
+}
+.scroll-to-top.show {
+    opacity: 1;
+    visibility: visible;
+    bottom: 2rem;
+}
