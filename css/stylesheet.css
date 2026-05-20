@@ -625,3 +625,103 @@ img{
     border-radius: 20px;
 }
 }
+
+.footer {
+    background-color: #1b3a52;
+    color: white;
+    padding: 3rem 2rem 1.5rem;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1.5fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-section h4 {
+    color: white;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+.footer-logo {
+    margin-bottom: 1rem;
+}
+
+.footer-logo-text {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: white;
+}
+
+.footer-logo-tagline {
+    font-size: 0.7rem;
+    color: #ffc107;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-top: 0.25rem;
+}
+
+.footer-description {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li {
+    margin-bottom: 0.75rem;
+}
+
+.footer-links a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: #ffc107;
+}
+
+.footer-contact {
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.footer-contact p {
+    margin: 0 0 0.75rem 0;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.footer-contact a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-contact a:hover {
+    color: #ffc107;
+}
+
+.footer-certifications {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.85rem;
+}
