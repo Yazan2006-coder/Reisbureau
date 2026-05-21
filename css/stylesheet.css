@@ -338,11 +338,18 @@ button:hover {
 }
 
 .trip-image {
-    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     height: 200px;
-    background-size: cover;
-    background-position: center;
+    overflow: hidden;
+    margin-bottom: 1rem;
     position: relative;
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 }
 
 .trip-label {
@@ -450,4 +457,328 @@ button:hover {
     font-size: 0.9rem;
     padding: 0 1.5rem;
     margin: 0.5rem 0 0;
+}
+
+.offers {
+    background-color: white;
+    padding: 4rem 2rem;
+}
+
+.offers-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.offers-header {
+    margin-bottom: 3rem;
+}
+
+.offers-label {
+    color: #ffc107;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+}
+
+.offers-header h2 {
+    color: #1b3a52;
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.offers-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+.offer-card {
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.offer-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+.offer-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+    position: relative;
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+}
+
+.offer-label {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.offer-card .offer-tags {
+    padding: 1rem 1.5rem 0;
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.offer-card h3 {
+    color: #1b3a52;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0.5rem 1.5rem 0.5rem;
+    padding: 0;
+}
+
+.offer-location {
+    color: #666;
+    font-size: 0.9rem;
+    margin: 0.5rem 1.5rem;
+    padding: 0;
+}
+
+.offer-rating {
+    color: #ffc107;
+    font-size: 0.9rem;
+    margin: 0.5rem 1.5rem;
+    padding: 0;
+}
+
+.offer-price {
+    color: #1b3a52;
+    font-size: 0.95rem;
+    margin: 0.5rem 1.5rem 1.5rem;
+    padding: 0;
+}
+
+.offer-price strong {
+    color: #1b3a52;
+    font-weight: 700;
+}
+
+.why-horizont {
+    background-color: #f5f1e8;
+    padding: 4rem 2rem;
+}
+
+.why-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.why-content {
+    padding-right: 2rem;
+}
+
+.why-label {
+    color: #ffc107;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+}
+
+.why-content h2 {
+    color: #1b3a52;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    line-height: 1.3;
+}
+
+.why-description {
+    color: #333;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 2.5rem;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-number {
+    color: #1b3a52;
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+.stat-label {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.office-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+}
+}
+
+.footer {
+    background-color: #1b3a52;
+    color: white;
+    padding: 3rem 2rem 1.5rem;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1.5fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-section h4 {
+    color: white;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+.footer-logo {
+    margin-bottom: 1rem;
+}
+
+.footer-logo-text {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: white;
+}
+
+.footer-logo-tagline {
+    font-size: 0.7rem;
+    color: #ffc107;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-top: 0.25rem;
+}
+
+.footer-description {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li {
+    margin-bottom: 0.75rem;
+}
+
+.footer-links a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: #ffc107;
+}
+
+.footer-contact {
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.footer-contact p {
+    margin: 0 0 0.75rem 0;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.footer-contact a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-contact a:hover {
+    color: #ffc107;
+}
+
+.footer-certifications {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.85rem;
+}
+.scroll-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background-color: #1b3a52;
+    color: white;
+    border: none;
+    padding: 1rem 1.25rem;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 999;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.scroll-to-top:hover {
+    background-color: #ffc107;
+    color: #1b3a52;
+    transform: translateY(-5px);
+}
+.scroll-to-top.show {
+    opacity: 1;
+    visibility: visible;
+    bottom: 2rem;
 }
