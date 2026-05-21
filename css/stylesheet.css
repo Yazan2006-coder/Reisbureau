@@ -913,3 +913,139 @@ img{
     visibility: visible;
     bottom: 2rem;
 }
+
+/* Over ons pagina */
+.overons-hero {
+    background-color: white;
+    padding: 3rem 2rem 2rem;
+    border-bottom: 1px solid #eee;
+}
+
+.overons-hero-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.overons-hero-label {
+    color: #ffc107;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 0.75rem;
+}
+
+.overons-hero h1 {
+    color: #1b3a52;
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+.overons-main {
+    background-color: #f5f1e8;
+    padding: 4rem 2rem;
+}
+
+.overons-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+}
+
+.overons-text p {
+    color: #333;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+}
+
+.overons-text p strong {
+    color: #c87533;
+}
+
+.overons-waarden h2 {
+    color: #1b3a52;
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin: 2rem 0 1.25rem;
+}
+
+.waarde-item {
+    margin-bottom: 1.25rem;
+    padding-left: 1rem;
+    border-left: 3px solid #ffc107;
+}
+
+.waarde-item h4 {
+    color: #1b3a52;
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+.waarde-item p {
+    color: #444;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.overons-right {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.team-image-wrapper {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.team-image-wrapper img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    display: block;
+}
+
+.team-image-label {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 0.3rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #333;
+    letter-spacing: 0.5px;
+}
+
+.overons-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.overons-stat-card {
+    background-color: white;
+    border-radius: 8px;
+    padding: 1.25rem 1.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.overons-stat-number {
+    color: #1b3a52;
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+.overons-stat-label {
+    color: #ffc107;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
