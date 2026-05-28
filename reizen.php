@@ -10,24 +10,7 @@
     <title>Reizen — Horizont Reizen</title>
 </head>
 <body>
-    <header class="header">
-        <div class="header-content">
-            <div class="logo-section">
-                <div class="logo">Horizont Reizen</div>
-                <div class="logo-tagline">JOUW WERELD, JOUW KOERS</div>
-            </div>
-            <nav class="nav">
-                <a href="index.html">Home</a>
-                <a href="reizen.html" class="nav-active">Reizen</a>
-                <a href="overons.html">Over ons</a>
-                <a href="contact.html">Contact</a>
-            </nav>
-            <div class="auth-buttons">
-                <a href="#" class="btn-login">Inloggen</a>
-                <a href="#" class="btn-signup">Account aanmaken</a>
-            </div>
-        </div>
-    </header>
+    <?php require('header.php'); ?>
 
     <section class="search-section">
         <div class="search-form">
@@ -220,62 +203,6 @@
         </div>
     </section>
 
-    <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <div class="footer-logo">
-                        <div class="footer-logo-text">Horizont Reizen</div>
-                        <div class="footer-logo-tagline">JOUW WERELD, JOUW KOERS</div>
-                    </div>
-                    <p class="footer-description">Horizont Reizen specialiseert in meer dan 25 jaar premium reizen naar de mooiste bestemmingen van Europa en daarbuiten.</p>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>REIZEN</h4>
-                    <ul class="footer-links">
-                        <li><a href="#">Alle reizen</a></li>
-                        <li><a href="#">Citytrips</a></li>
-                        <li><a href="#">Aanbiedingen</a></li>
-                        <li><a href="#">Last minute</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>SERVICE</h4>
-                    <ul class="footer-links">
-                        <li><a href="#">Contact</a></li>
-                        <li><a href="#">Over ons</a></li>
-                        <li><a href="#">Algemene voorwaarden</a></li>
-                        <li><a href="#">Privacy policy</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>CONTACT</h4>
-                    <div class="footer-contact">
-                        <p>Hayendaalsweg 98,<br>Nijmegen</p>
-                        <p>030 - 123 45 67</p>
-                        <p><a href="mailto:info@horizont.nl">info@horizont.nl</a></p>
-                        <p class="footer-certifications">ANVR · SGR · Calamiteitenfonds</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-        <button id="scrollToTopBtn" class="scroll-to-top" title="Scroll to top">↑</button>
-    <script>
-        const scrollToTopBtn = document.getElementById('scrollToTopBtn');
-        window.addEventListener('scroll', function () {
-            if (window.pageYOffset > 300) {
-                scrollToTopBtn.classList.add('show');
-            } else {
-                scrollToTopBtn.classList.remove('show');
-            }
-        });
-        scrollToTopBtn.addEventListener('click', function () {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-    </script>
+    <?php require('footer.php'); ?>
 </body>
 </html>
