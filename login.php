@@ -37,12 +37,6 @@
                 </form>
 
                 <p class="auth-switch">Nog geen account? <a href="register.php">Account aanmaken</a></p>
-
-                <div class="demo-accounts">
-                    <p><strong>Demo-accounts:</strong></p>
-                    <p>Klant: demo@horizont.nl / demo1234</p>
-                    <p>Admin: admin@horizont.nl / admin1234</p>
-                </div>
             </div>
         </div>
     </section>
