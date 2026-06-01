@@ -11,8 +11,8 @@
                 <a href="contact.php" class="<?php echo (basename($_SERVER['PHP_SELF']) == 'contact.php') ? 'nav-active' : ''; ?>">Contact</a>
             </nav>
             <div class="auth-buttons">
-                <a href="#" class="btn-login">Inloggen</a>
-                <a href="#" class="btn-signup">Account aanmaken</a>
+                <a href="login.php" class="btn-login">Inloggen</a>
+                <a href="register.php" class="btn-signup">Account aanmaken</a>
             </div>
         </div>
     </header>
