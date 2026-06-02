@@ -1283,6 +1283,38 @@ img{
     color: #ffc107;
 }
 
+.header-welkom {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.95rem;
+}
+
+.auth-melding {
+    border-radius: 6px;
+    padding: 0.85rem 1rem;
+    margin-bottom: 1.25rem;
+    font-size: 0.9rem;
+}
+
+.auth-melding p {
+    margin: 0 0 0.25rem;
+}
+
+.auth-melding p:last-child {
+    margin-bottom: 0;
+}
+
+.auth-melding--fout {
+    background-color: #fde8e8;
+    border-left: 4px solid #c0392b;
+    color: #7b1f1f;
+}
+
+.auth-melding--succes {
+    background-color: #e8f8e8;
+    border-left: 4px solid #27ae60;
+    color: #1a5c2e;
+}
+
 .demo-accounts {
     background-color: #f5f1e8;
     border-radius: 6px;
