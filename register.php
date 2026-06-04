@@ -1,7 +1,6 @@
-<?php
+﻿<?php
 session_start();
 
-// Al ingelogd → doorsturen naar homepage
 if (isset($_SESSION['gebruiker_id'])) {
     header('Location: index.php');
     exit;
@@ -72,11 +71,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/stylesheet.css">
-    <title>Account aanmaken — Horizont Reizen</title>
+    <title>Account aanmaken â€” Horizont Reizen</title>
 </head>
 
 <body>
-    <?php require('header.php'); ?>
+    <?php require('includes/header.php'); ?>
 
     <section class="auth-page">
         <div class="auth-container">
@@ -129,6 +128,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </section>
 
-    <?php require('footer.php'); ?>
+    <?php require('includes/footer.php'); ?>
 </body>
 </html>
