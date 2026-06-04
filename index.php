@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <?php require('header.php'); ?>
+    <?php require('includes/header.php'); ?>
     <section class="hero">
         <div class="hero-content">
             <div class="hero-text">
@@ -212,6 +212,6 @@
         </div>
     </section>
 
-    <?php require('footer.php'); ?>
+    <?php require('includes/footer.php'); ?>
 </body>
 </html>

@@ -1348,3 +1348,90 @@ img{
         font-size: 1.8rem;
     }
 }
+
+/* Guidelines */
+.guidelines-hero {
+    background-color: #1b3a53;
+    padding: 3rem 2rem;
+    text-align: center;
+    color: white;
+}
+
+.guidelines-hero-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: #ffc107;
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+}
+
+.guidelines-hero h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+}
+
+.guidelines-main {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 3rem 2rem 4rem;
+}
+
+.guidelines-intro {
+    color: #555;
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.guidelines-article {
+    margin-bottom: 2.5rem;
+}
+
+.guidelines-article h2 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #1b3a53;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 2px solid #ffc107;
+    display: inline-block;
+}
+
+.guidelines-article h3 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #1b3a53;
+    margin: 1.25rem 0 0.5rem;
+}
+
+.guidelines-article p {
+    color: #444;
+    font-size: 0.95rem;
+    line-height: 1.75;
+    margin-bottom: 0.85rem;
+}
+
+.guidelines-article ul {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0 1rem;
+}
+
+.guidelines-article ul li {
+    padding: 0.35rem 0 0.35rem 1.25rem;
+    position: relative;
+    color: #444;
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+.guidelines-article ul li::before {
+    content: "–";
+    position: absolute;
+    left: 0;
+    color: #ffc107;
+    font-weight: 700;
+}

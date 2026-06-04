@@ -8,10 +8,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/stylesheet.css">
-    <title>Reizen — Horizont Reizen</title>
+    <title>Reizen â€” Horizont Reizen</title>
 </head>
 <body>
-    <?php require('header.php'); ?>
+    <?php require('includes/header.php'); ?>
 
     <section class="search-section">
         <div class="search-form">
@@ -27,9 +27,9 @@
                 <label for="flexible">Flexibel</label>
                 <select id="flexible">
                     <option>Exacte datum</option>
-                    <option>± 1 dag</option>
-                    <option>± 3 dagen</option>
-                    <option>± 1 week</option>
+                    <option>Â± 1 dag</option>
+                    <option>Â± 3 dagen</option>
+                    <option>Â± 1 week</option>
                 </select>
             </div>
             <div class="form-group">
@@ -72,8 +72,8 @@
                     <p class="filter-group-title">Max. prijs p.p.</p>
                     <input type="range" class="price-range" min="200" max="1500" value="1500">
                     <div class="price-labels">
-                        <span>€ 200</span>
-                        <span>€ 1500</span>
+                        <span>â‚¬ 200</span>
+                        <span>â‚¬ 1500</span>
                     </div>
                 </div>
 
@@ -109,101 +109,101 @@
                     <div class="trip-card">
                         <div class="trip-image">
                             <img src="images/paris.jpg" alt="Parijs">
-                            <div class="trip-label">PARIJS · EIFFELTOREN</div>
+                            <div class="trip-label">PARIJS Â· EIFFELTOREN</div>
                         </div>
                         <div class="trip-tags">
                             <span class="tag tag-default">Citytrip</span>
                             <span class="tag tag-recommended">Aanbevolen</span>
                             <span class="tag tag-available">Beschikbaar</span>
                         </div>
-                        <h3>Parijs — Stad van het licht</h3>
-                        <p class="trip-location">&#128205; Parijs, Frankrijk · 4 nachten</p>
-                        <div class="trip-rating">★★★★★ 4.7 (142)</div>
-                        <div class="trip-price">vanaf <strong>€ 689</strong> p.p.</div>
+                        <h3>Parijs â€” Stad van het licht</h3>
+                        <p class="trip-location">&#128205; Parijs, Frankrijk Â· 4 nachten</p>
+                        <div class="trip-rating">â˜…â˜…â˜…â˜…â˜… 4.7 (142)</div>
+                        <div class="trip-price">vanaf <strong>â‚¬ 689</strong> p.p.</div>
                     </div>
 
                     <div class="trip-card">
                         <div class="trip-image">
                             <img src="images/rome.jpg" alt="Rome">
-                            <div class="trip-label">ROME · COLOSSEUM</div>
+                            <div class="trip-label">ROME Â· COLOSSEUM</div>
                         </div>
                         <div class="trip-tags">
                             <span class="tag tag-default">Citytrip</span>
                             <span class="tag tag-popular">Populair</span>
                             <span class="tag tag-available">Beschikbaar</span>
                         </div>
-                        <h3>Rome — Eeuwige stad</h3>
-                        <p class="trip-location">&#128205; Rome, Italië · 5 nachten</p>
-                        <div class="trip-rating">★★★★★ 4.8 (211)</div>
-                        <div class="trip-price">vanaf <strong>€ 849</strong> p.p.</div>
+                        <h3>Rome â€” Eeuwige stad</h3>
+                        <p class="trip-location">&#128205; Rome, ItaliÃ« Â· 5 nachten</p>
+                        <div class="trip-rating">â˜…â˜…â˜…â˜…â˜… 4.8 (211)</div>
+                        <div class="trip-price">vanaf <strong>â‚¬ 849</strong> p.p.</div>
                     </div>
 
                     <div class="trip-card">
                         <div class="trip-image">
                             <img src="images/barcelona.jpg" alt="Barcelona">
-                            <div class="trip-label">BARCELONA · SAGRADA FAMÍLIA</div>
+                            <div class="trip-label">BARCELONA Â· SAGRADA FAMÃLIA</div>
                         </div>
                         <div class="trip-tags">
                             <span class="tag tag-default">Citytrip</span>
                             <span class="tag tag-recommended">Aanbieding</span>
                             <span class="tag tag-almost">Bijna vol</span>
                         </div>
-                        <h3>Barcelona — Gaudí & strand</h3>
-                        <p class="trip-location">&#128205; Barcelona, Spanje · 4 nachten</p>
-                        <div class="trip-rating">★★★★★ 4.6 (178)</div>
-                        <div class="trip-price">vanaf <strong>€ 599</strong> p.p.</div>
+                        <h3>Barcelona â€” GaudÃ­ & strand</h3>
+                        <p class="trip-location">&#128205; Barcelona, Spanje Â· 4 nachten</p>
+                        <div class="trip-rating">â˜…â˜…â˜…â˜…â˜… 4.6 (178)</div>
+                        <div class="trip-price">vanaf <strong>â‚¬ 599</strong> p.p.</div>
                     </div>
 
                     <div class="trip-card">
                         <div class="trip-image">
                             <img src="images/lissabon.jpg" alt="Lissabon">
-                            <div class="trip-label">LISSABON · ALFAMA</div>
+                            <div class="trip-label">LISSABON Â· ALFAMA</div>
                         </div>
                         <div class="trip-tags">
                             <span class="tag tag-default">Citytrip</span>
                             <span class="tag tag-available">Beschikbaar</span>
                         </div>
-                        <h3>Lissabon — Tegels & tram 28</h3>
-                        <p class="trip-location">&#128205; Lissabon, Portugal · 4 nachten</p>
-                        <div class="trip-rating">★★★★★ 4.7 (96)</div>
-                        <div class="trip-price">vanaf <strong>€ 729</strong> p.p.</div>
+                        <h3>Lissabon â€” Tegels & tram 28</h3>
+                        <p class="trip-location">&#128205; Lissabon, Portugal Â· 4 nachten</p>
+                        <div class="trip-rating">â˜…â˜…â˜…â˜…â˜… 4.7 (96)</div>
+                        <div class="trip-price">vanaf <strong>â‚¬ 729</strong> p.p.</div>
                     </div>
 
                     <div class="trip-card">
                         <div class="trip-image">
                             <img src="images/prague.jpg" alt="Praag">
-                            <div class="trip-label">PRAAG · KARELSBRUG</div>
+                            <div class="trip-label">PRAAG Â· KARELSBRUG</div>
                         </div>
                         <div class="trip-tags">
                             <span class="tag tag-default">Citytrip</span>
                             <span class="tag tag-recommended">Aanbieding</span>
                             <span class="tag tag-available">Beschikbaar</span>
                         </div>
-                        <h3>Praag — Gouden stad</h3>
-                        <p class="trip-location">&#128205; Praag, Tsjechië · 3 nachten</p>
-                        <div class="trip-rating">★★★★☆ 4.5 (83)</div>
-                        <div class="trip-price">vanaf <strong>€ 549</strong> p.p.</div>
+                        <h3>Praag â€” Gouden stad</h3>
+                        <p class="trip-location">&#128205; Praag, TsjechiÃ« Â· 3 nachten</p>
+                        <div class="trip-rating">â˜…â˜…â˜…â˜…â˜† 4.5 (83)</div>
+                        <div class="trip-price">vanaf <strong>â‚¬ 549</strong> p.p.</div>
                     </div>
 
                     <div class="trip-card">
                         <div class="trip-image">
                             <img src="images/wenen.jpg" alt="Wenen">
-                            <div class="trip-label">WENEN · SCHÖNBRUNN</div>
+                            <div class="trip-label">WENEN Â· SCHÃ–NBRUNN</div>
                         </div>
                         <div class="trip-tags">
                             <span class="tag tag-default">Citytrip</span>
                             <span class="tag tag-available">Beschikbaar</span>
                         </div>
-                        <h3>Wenen — Klassiek & koffie</h3>
-                        <p class="trip-location">&#128205; Wenen, Oostenrijk · 4 nachten</p>
-                        <div class="trip-rating">★★★★★ 4.6 (71)</div>
-                        <div class="trip-price">vanaf <strong>€ 779</strong> p.p.</div>
+                        <h3>Wenen â€” Klassiek & koffie</h3>
+                        <p class="trip-location">&#128205; Wenen, Oostenrijk Â· 4 nachten</p>
+                        <div class="trip-rating">â˜…â˜…â˜…â˜…â˜… 4.6 (71)</div>
+                        <div class="trip-price">vanaf <strong>â‚¬ 779</strong> p.p.</div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <?php require('footer.php'); ?>
+    <?php require('includes/footer.php'); ?>
 </body>
 </html>

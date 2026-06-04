@@ -6,10 +6,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/stylesheet.css">
-    <title>Contact — Horizont Reizen</title>
+    <title>Contact â€” Horizont Reizen</title>
 </head>
 <body>
-    <?php require('header.php'); ?>
+    <?php require('includes/header.php'); ?>
     <section class="contact-form">
         <div class="contact-container">
             <div class="contact-header">
@@ -49,6 +49,6 @@
             </form>
         </div>
     </section>
-    <?php require('footer.php'); ?>
+    <?php require('includes/footer.php'); ?>
 </body>
 </html>
