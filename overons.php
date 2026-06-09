@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/stylesheet.css">
-    <title>Over ons â€” Horizont Reizen</title>
+    <title>Over ons - Horizont Reizen</title>
 
 </head>
 
@@ -23,14 +23,14 @@
     <section class="overons-main">
         <div class="overons-container">
             <div class="overons-text overons-waarden">
-                <p>Horizont Reizen werd in <strong>2001</strong> opgericht door drie reisspecialisten met Ã©Ã©n gedeelde overtuiging: een goede reis verdient persoonlijke aandacht. Sindsdien zijn we uitgegroeid tot een team van 24 specialisten, allen met diepe kennis van hun eigen bestemmingen.</p>
+                <p>Horizont Reizen werd in <strong>2001</strong> opgericht door drie reisspecialisten met één gedeelde overtuiging: een goede reis verdient persoonlijke aandacht. Sindsdien zijn we uitgegroeid tot een team van 24 specialisten, allen met diepe kennis van hun eigen bestemmingen.</p>
                 <p>We werken niet met massabestemmingen of standaardpakketten. Elke reis wordt door een specialist samengesteld die zelf in de bestemming heeft gewoond of gereisd. Dat geeft jou de zekerheid dat de hotels, ervaringen en logistiek kloppen.</p>
 
                 <h2>Onze waarden</h2>
 
                 <div class="waarde-item">
                     <h4>Persoonlijk</h4>
-                    <p>Elke boeking heeft Ã©Ã©n vast aanspreekpunt â€” voor, tijdens en na de reis.</p>
+                    <p>Elke boeking heeft een vast aanspreekpunt — voor, tijdens en na de reis.</p>
                 </div>
                 <div class="waarde-item">
                     <h4>Verantwoord</h4>
@@ -45,7 +45,7 @@
             <div class="overons-right">
                 <div class="team-image-wrapper">
                     <img src="images/TFWCM.jpg" alt="Team Horizont Utrecht">
-                    <div class="team-image-label">TEAM HORIZONT â€” UTRECHT</div>
+                    <div class="team-image-label">TEAM HORIZONT — UTRECHT</div>
                 </div>
 
                 <div class="overons-stats">
