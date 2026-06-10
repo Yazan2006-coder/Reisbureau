@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-// Al ingelogd → doorsturen naar homepage
 if (isset($_SESSION['gebruiker_id'])) {
     header('Location: index.php');
     exit;
@@ -31,7 +30,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['gebruiker_naam'] = $gebruiker['voornaam'];
             $_SESSION['gebruiker_rol']  = $gebruiker['rol'];
 
-            // Onthoud mij → cookie 30 dagen
             if ($onthoud) {
                 session_set_cookie_params(60 * 60 * 24 * 30);
                 session_regenerate_id(true);
@@ -51,11 +49,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/stylesheet.css">
-    <title>Inloggen — Horizont Reizen</title>
+    <title>Inloggen â€” Horizont Reizen</title>
 </head>
 
 <body>
-    <?php require('header.php'); ?>
+    <?php require('includes/header.php'); ?>
 
     <section class="auth-page">
         <div class="auth-container">
@@ -101,6 +99,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </section>
 
-    <?php require('footer.php'); ?>
+    <?php require('includes/footer.php'); ?>
 </body>
 </html>

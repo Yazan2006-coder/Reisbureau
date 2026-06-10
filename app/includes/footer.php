@@ -12,20 +12,20 @@
                 <div class="footer-section">
                     <h4>REIZEN</h4>
                     <ul class="footer-links">
-                        <li><a href="#">Alle reizen</a></li>
-                        <li><a href="#">Citytrips</a></li>
-                        <li><a href="#">Aanbiedingen</a></li>
-                        <li><a href="#">Last minute</a></li>
+                        <li><a href="reizen.php">Alle reizen</a></li>
+                        <li><a href="reizen.php">Citytrips</a></li>
+                        <li><a href="reizen.php">Aanbiedingen</a></li>
+                        <li><a href="reizen.php">Last minute</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-section">
                     <h4>SERVICE</h4>
                     <ul class="footer-links">
-                        <li><a href="#">Contact</a></li>
-                        <li><a href="#">Over ons</a></li>
-                        <li><a href="#">Algemene voorwaarden</a></li>
-                        <li><a href="#">Privacy policy</a></li>
+                        <li><a href="contact.php">Contact</a></li>
+                        <li><a href="overons.php">Over ons</a></li>
+                        <li><a href="guidelines.php">Algemene voorwaarden</a></li>
+                        <li><a href="guidelines.php">Privacy policy</a></li>
                     </ul>
                 </div>
                 
