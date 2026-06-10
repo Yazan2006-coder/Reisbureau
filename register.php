@@ -1,6 +1,43 @@
-<?php
+﻿<?php
 session_start();
 require 'db.php';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST'){
+    $voornaam = trim($_POST['voornaam']);
+    $achternaam = trim($_POST['achternaam']);
+    $email = trim($_POST['email']);
+    $wachtwoord = $_POST['wachtwoord'];
+    $bevestig_wachtwoord = $_POST['bevestig_wachtwoord'];
+
+    $fouten =[];
+
+    if($voornaam === ''){
+        $fouten[] = 'Voornaam is verplicht.';
+    }
+    if ($achternaam ===''){
+        $fouten[] = 'Achternaam is verplicht.';
+    }
+    if ($email ===''){
+        $fouten[] = 'E-mailadres is verplicht.';
+    }
+    if ($wachtwoord !== $bevestig_wachtwoord){
+        $fouten[] = 'Wachtwoorden komen niet overeen.';
+    }
+    if (empty($fouten)){
+        $stmt = $pdo->prepare('SELECT id FROM gebruikers WHERE email = ?');
+        $stmt->execute([$email]);
+        if ($stmt->fetch()){
+            $fouten[] = 'Dit e-mailadres is al in gebruik.';
+        if (empty($fouten)){
+            $hash = password_hash($wachtwoord, PASSWORD_BCRYPT);
+            $stmt = $pdo->prepare('INSERT INTO gebruikers (voornaam, achternaam, email, wachtwoord)VALUES(?,?,?,?)');
+            $stmt->execute([$voornaam, $achternaam, $email, $hash]);        
+        }
+        }
+    }
+}
+
+
 ?>
 <!DOCTYPE html>
 <html lang="nl">
