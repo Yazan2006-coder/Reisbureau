@@ -1,6 +1,6 @@
 <?php
 $host     = 'db';
-$dbname   = 'reisbureau';
+$dbname   = 'mydatabase';
 $username = 'root';
 $password = 'rootpassword';
 
