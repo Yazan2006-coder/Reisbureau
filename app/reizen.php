@@ -203,6 +203,38 @@
             </div>
         </div>
     </section>
+    <script>
+        function filterOpPrijs() {
+            // Haal de waarde op van de slider
+            var maxPrijs = document.getElementById("prijsSlider").value;
+            // Laat de prijs zien boven de slider
+            document.getElementById("prijsWeergave").innerHTML = "€ " + maxPrijs;
+            // Haal alle reiskaartjes op
+            var reisKaartjes = document.getElementsByClassName("trip-card");
+            // Loop door alle kaartjes heen
+            for (var i = 0; i < reisKaartjes.length; i++) {
+                var kaartje = reisKaartjes[i];
+                // Zoek de prijs in het kaartje
+                var prijsElement = kaartje.querySelector(".trip-price strong");
+ 
+                // Als er geen prijs is, sla dit kaartje over
+                if (prijsElement == null) {
+                    continue;
+                }
+                // Haal het getal op uit de prijs (verwijder "€ " en spaties)
+                var prijsTekst = prijsElement.innerHTML;
+                var prijs = parseInt(prijsTekst.replace("€ ", "").replace(" ", ""));
+                // Controleer of de prijs hoger is dan het maximum
+                if (prijs > maxPrijs) {
+                    // Verberg het kaartje
+                    kaartje.style.display = "none";
+                } else {
+                    // Laat het kaartje zien
+                    kaartje.style.display = "block";
+                }
+            }
+        }
+    </script>
 
     <?php require('includes/footer.php'); ?>
 </body>
