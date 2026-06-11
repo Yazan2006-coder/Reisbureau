@@ -17,7 +17,7 @@
                 <p>Heb je vragen over onze reizen? We helpen je graag!</p>
             </div>
             
-            <form class="contact-form-content">
+            <form class="contact-form-content" onsubmit="return verstuurFormulier()">
                 <div class="form-row">
                     <div class="form-group">
                         <label for="name">Naam *</label>
@@ -49,6 +49,42 @@
             </form>
         </div>
     </section>
+    <script>
+        function verstuurFormulier() {
+            // Haal de waarden op uit het formulier
+            var naam = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            var onderwerp = document.getElementById("subject").value;
+            var bericht = document.getElementById("message").value;
+            // Controleer of naam is ingevuld
+            if (naam == "") {
+                alert("Vul je naam in!");
+                return false;
+            }
+            // Controleer of email is ingevuld
+            if (email == "") {
+                alert("Vul je e-mailadres in!");
+                return false;
+            }
+            // Controleer of email een @ bevat
+            if (email.includes("@") == false) {
+                alert("Vul een geldig e-mailadres in!");
+                return false;
+            }
+            // Controleer of onderwerp is ingevuld
+            if (onderwerp == "") {
+                alert("Vul een onderwerp in!");
+                return false;
+            }
+            // Controleer of bericht is ingevuld
+            if (bericht == "") {
+                alert("Vul een bericht in!");
+                return false;
+            }
+            // Als alles is ingevuld, geef een melding
+            alert("Je bericht is verstuurd! We nemen zo snel mogelijk contact met je op.");
+        }
+    </script>
     <?php require('includes/footer.php'); ?>
 </body>
 </html>
