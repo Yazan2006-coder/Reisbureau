@@ -1,4 +1,16 @@
-<?php session_start(); ?>
+<?php 
+session_start();
+require('db.php');
+
+// Haal alle actieve reizen uit de database
+$sql = "SELECT * FROM reizen WHERE actief = TRUE ORDER BY prijs ASC";
+$stmt = $pdo->prepare($sql);
+$stmt->execute();
+$alle_reizen = $stmt->fetchAll();
+
+// Tel het aantal reizen
+$aantal_reizen = count($alle_reizen);
+?>
 <!DOCTYPE html>
 <html lang="nl">
 <head>
@@ -93,7 +105,7 @@
 
             <div class="results-section">
                 <div class="results-header">
-                    <h2>6 reizen gevonden</h2>
+                    <h2><?php echo $aantal_reizen; ?> reizen gevonden</h2>
                     <div class="sort-group">
                         <span>Sorteren op</span>
                         <select>
@@ -106,103 +118,71 @@
                 </div>
 
                 <div class="reizen-grid">
+                    <?php 
+                    // Controleer of er reizen zijn
+                    if ($aantal_reizen > 0):
+                        foreach ($alle_reizen as $reis):
+                            // Bereken aantal vrije plaatsen
+                            $vrije_plaatsen = $reis['max_personen'] - $reis['geboekt_personen'];
+                            $beschikbaarheid_procent = ($reis['geboekt_personen'] / $reis['max_personen']) * 100;
+                            
+                            // Bepaal beschikbaarheidsstatus
+                            if ($vrije_plaatsen == 0):
+                                $beschikbaarheid_tag = '<span class="tag tag-volzet">Volzet</span>';
+                            elseif ($beschikbaarheid_procent >= 70):
+                                $beschikbaarheid_tag = '<span class="tag tag-almost">Bijna vol</span>';
+                            else:
+                                $beschikbaarheid_tag = '<span class="tag tag-available">Beschikbaar</span>';
+                            endif;
+                            
+                            // Bereken aantal nachten
+                            $start = new DateTime($reis['startdatum']);
+                            $eind = new DateTime($reis['einddatum']);
+                            $interval = $start->diff($eind);
+                            $aantal_nachten = $interval->days;
+                    ?>
                     <div class="trip-card">
                         <div class="trip-image">
-                            <img src="images/paris.jpg" alt="Parijs">
-                            <div class="trip-label">PARIJS - EIFFELTOREN</div>
+                            <img src="<?php echo htmlspecialchars($reis['afbeelding_url']); ?>" alt="<?php echo htmlspecialchars($reis['bestemming']); ?>">
+                            <div class="trip-label"><?php echo strtoupper(htmlspecialchars($reis['bestemming'])); ?></div>
                         </div>
                         <div class="trip-tags">
-                            <span class="tag tag-default">Citytrip</span>
-                            <span class="tag tag-recommended">Aanbevolen</span>
-                            <span class="tag tag-available">Beschikbaar</span>
+                            <span class="tag tag-default"><?php echo htmlspecialchars($reis['type_reis']); ?></span>
+                            <?php echo $beschikbaarheid_tag; ?>
                         </div>
-                        <h3>Parijs – Stad van het licht</h3>
-                        <p class="trip-location">&#128205; Parijs, Frankrijk · 4 nachten</p>
-                        <div class="trip-rating">★★★★★ 4.7 (142)</div>
-                        <div class="trip-price">vanaf <strong>€ 689</strong> p.p.</div>
+                        <h3><?php echo htmlspecialchars($reis['bestemming']); ?> – <?php echo htmlspecialchars($reis['beschrijving']); ?></h3>
+                        <p class="trip-location">📍 <?php echo htmlspecialchars($reis['bestemming']); ?> · <?php echo $aantal_nachten; ?> <?php echo ($aantal_nachten == 1) ? 'nacht' : 'nachten'; ?></p>
+                        <div class="trip-rating">★★★★★ 4.5 (<?php echo $aantal_reizen; ?>)</div>
+                        <div class="trip-price">vanaf <strong>€ <?php echo number_format($reis['prijs'], 2, ',', '.'); ?></strong> p.p.</div>
+                        <p class="available-places">
+                            <?php echo $vrije_plaatsen; ?> plaatsen beschikbaar
+                        </p>
                     </div>
-
-                    <div class="trip-card">
-                        <div class="trip-image">
-                            <img src="images/rome.jpg" alt="Rome">
-                            <div class="trip-label">ROME - COLOSSEUM</div>
-                        </div>
-                        <div class="trip-tags">
-                            <span class="tag tag-default">Citytrip</span>
-                            <span class="tag tag-popular">Populair</span>
-                            <span class="tag tag-available">Beschikbaar</span>
-                        </div>
-                        <h3>Rome – Eeuwige stad</h3>
-                        <p class="trip-location">&#128205; Rome, Italië · 5 nachten</p>
-                        <div class="trip-rating">★★★★★ 4.8 (211)</div>
-                        <div class="trip-price">vanaf <strong>€ 849</strong> p.p.</div>
+                    <?php 
+                        endforeach;
+                    else:
+                    ?>
+                    <div class="no-reizen-message">
+                        <h3>Er zijn momenteel geen reizen beschikbaar</h3>
+                        <p>Kom later terug!</p>
                     </div>
-
-                    <div class="trip-card">
-                        <div class="trip-image">
-                            <img src="images/barcelona.jpg" alt="Barcelona">
-                            <div class="trip-label">BARCELONA - SAGRADA FAMÍLIA</div>
-                        </div>
-                        <div class="trip-tags">
-                            <span class="tag tag-default">Citytrip</span>
-                            <span class="tag tag-recommended">Aanbieding</span>
-                            <span class="tag tag-almost">Bijna vol</span>
-                        </div>
-                        <h3>Barcelona – Gaudí & strand</h3>
-                        <p class="trip-location">&#128205; Barcelona, Spanje · 4 nachten</p>
-                        <div class="trip-rating">★★★★★ 4.6 (178)</div>
-                        <div class="trip-price">vanaf <strong>€ 599</strong> p.p.</div>
-                    </div>
-
-                    <div class="trip-card">
-                        <div class="trip-image">
-                            <img src="images/lissabon.jpg" alt="Lissabon">
-                            <div class="trip-label">LISSABON - ALFAMA</div>
-                        </div>
-                        <div class="trip-tags">
-                            <span class="tag tag-default">Citytrip</span>
-                            <span class="tag tag-available">Beschikbaar</span>
-                        </div>
-                        <h3>Lissabon – Tegels & tram 28</h3>
-                        <p class="trip-location">&#128205; Lissabon, Portugal · 4 nachten</p>
-                        <div class="trip-rating">★★★★★ 4.7 (96)</div>
-                        <div class="trip-price">vanaf <strong>€ 729</strong> p.p.</div>
-                    </div>
-
-                    <div class="trip-card">
-                        <div class="trip-image">
-                            <img src="images/prague.jpg" alt="Praag">
-                            <div class="trip-label">PRAAG - KARELSBRUG</div>
-                        </div>
-                        <div class="trip-tags">
-                            <span class="tag tag-default">Citytrip</span>
-                            <span class="tag tag-recommended">Aanbieding</span>
-                            <span class="tag tag-available">Beschikbaar</span>
-                        </div>
-                        <h3>Praag – Gouden stad</h3>
-                        <p class="trip-location">&#128205; Praag, Tsjechië · 3 nachten</p>
-                        <div class="trip-rating">★★★★☆ 4.5 (83)</div>
-                        <div class="trip-price">vanaf <strong>€ 549</strong> p.p.</div>
-                    </div>
-
-                    <div class="trip-card">
-                        <div class="trip-image">
-                            <img src="images/wenen.jpg" alt="Wenen">
-                            <div class="trip-label">WENEN - SCHÖNBRUNN</div>
-                        </div>
-                        <div class="trip-tags">
-                            <span class="tag tag-default">Citytrip</span>
-                            <span class="tag tag-available">Beschikbaar</span>
-                        </div>
-                        <h3>Wenen – Klassiek & koffie</h3>
-                        <p class="trip-location">&#128205; Wenen, Oostenrijk · 4 nachten</p>
-                        <div class="trip-rating">★★★★★ 4.6 (71)</div>
-                        <div class="trip-price">vanaf <strong>€ 779</strong> p.p.</div>
-                    </div>
+                    <?php 
+                    endif; 
+                    ?>
                 </div>
             </div>
         </div>
     </section>
+    
+    <?php 
+    // Toon admin link als gebruiker admin is
+    if (isset($_SESSION['gebruiker_rol']) && $_SESSION['gebruiker_rol'] === 'admin'): 
+    ?>
+    <section class="admin-link-section">
+        <a href="admin/reizen.php">→ Admin Panel: Reizen beheren</a>
+    </section>
+    <?php endif; ?>
+    
     <?php require('includes/footer.php'); ?>
 </body>
 </html>
