@@ -1,6 +1,23 @@
 <?php
 session_start();
 require 'db.php';
+if($_SERVER['REQUEST_METHOD'] === 'POST'){
+    $email = trim($_POST['email']);
+    $wachtwoord = $_POST['wachtwoord'];
+
+    $stmt = $pdo->prepare('SELECT * FROM gebruikers WHERE email =?');
+    $stmt->execute([$email]);
+    $gebruiker = $stmt->fetch();
+
+    if($gebruiker && password_verify($wachtwoord, $gebruiker['wachtwoord'])){
+        $_SESSION['gebruiker_id'] = $gebruiker['id'];
+        $_SESSION['gebruiker_naam'] = $gebruiker['voornaam'];
+        header('Location: index.php');
+        exit;
+    } else{
+        $fout = 'E-mailadres of wachtwoord is onjuist.';
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="nl">
@@ -19,6 +36,8 @@ require 'db.php';
             <h1 class="auth-title">Inloggen</h1>
 
             <div class="auth-card">
+               <?php  if ($_GET['registered'] ?? 0 == 1) echo "<p style='color:green'>Account aangemaakt! Je kunt nu inloggen.</p>"; ?>
+               <?php if (isset($fout)) echo "<p style='color:red'>$fout</p>"; ?>
                 <form action="login.php" method="POST">
                     <div class="auth-form-group">
                         <label for="email">E-mailadres</label>
