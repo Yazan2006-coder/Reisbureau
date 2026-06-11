@@ -1,25 +1,21 @@
 <?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="nl">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/stylesheet.css">
-    <title>Over ons - Horizont Reizen</title>
-
+    <title>Account - Horizont Reizen</title>
 </head>
-
 <body>
-    <?php require('includes/header.php'); ?>
-
+        <?php require('includes/header.php'); ?>
     <section class="overons-hero">
         <div class="overons-hero-container">
-            <p class="overons-hero-label">OVER ONS</p>
-            <h1>25 jaar samen op weg</h1>
+            <p class="overons-hero-label">MIJN ACCOUNT</p>
+            <h1>Hallo, <?= htmlspecialchars($_SESSION['gebruiker_naam']) ?></h1>
         </div>
     </section>
-
+    <div class="overons-stat-card"></div>
     <section class="overons-main">
         <div class="overons-container">
             <div class="overons-text overons-waarden">
@@ -48,29 +44,9 @@
                     <div class="team-image-label">TEAM HORIZONT — UTRECHT</div>
                 </div>
 
-                <div class="overons-stats">
-                    <div class="overons-stat-card">
-                        <div class="overons-stat-number">24</div>
-                        <div class="overons-stat-label">Reisspecialisten</div>
-                    </div>
-                    <div class="overons-stat-card">
-                        <div class="overons-stat-number">12.500+</div>
-                        <div class="overons-stat-label">Reizigers per jaar</div>
-                    </div>
-                    <div class="overons-stat-card">
-                        <div class="overons-stat-number">4.7 / 5</div>
-                        <div class="overons-stat-label">Klantbeoordeling</div>
-                    </div>
-                    <div class="overons-stat-card">
-                        <div class="overons-stat-number">60+</div>
-                        <div class="overons-stat-label">Bestemmingen</div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
-
     <?php require('includes/footer.php'); ?>
 </body>
-
 </html>

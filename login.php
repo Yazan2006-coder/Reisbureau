@@ -1,45 +1,21 @@
 <?php
 session_start();
-
-if (isset($_SESSION['gebruiker_id'])) {
-    header('Location: index.php');
-    exit;
-}
-
 require 'db.php';
+if($_SERVER['REQUEST_METHOD'] === 'POST'){
+    $email = trim($_POST['email']);
+    $wachtwoord = $_POST['wachtwoord'];
 
-$fout = '';
-$oud_email = '';
+    $stmt = $pdo->prepare('SELECT * FROM gebruikers WHERE email =?');
+    $stmt->execute([$email]);
+    $gebruiker = $stmt->fetch();
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $email      = trim($_POST['email']      ?? '');
-    $wachtwoord = $_POST['wachtwoord']      ?? '';
-    $onthoud    = isset($_POST['onthoud']);
-    $oud_email  = $email;
-
-    if ($email === '' || $wachtwoord === '') {
-        $fout = 'Vul je e-mailadres en wachtwoord in.';
-    } else {
-        $stmt = $pdo->prepare('SELECT * FROM gebruikers WHERE email = ?');
-        $stmt->execute([$email]);
-        $gebruiker = $stmt->fetch();
-
-        if ($gebruiker && password_verify($wachtwoord, $gebruiker['wachtwoord'])) {
-            // Sessie instellen
-            $_SESSION['gebruiker_id']   = $gebruiker['id'];
-            $_SESSION['gebruiker_naam'] = $gebruiker['voornaam'];
-            $_SESSION['gebruiker_rol']  = $gebruiker['rol'];
-
-            if ($onthoud) {
-                session_set_cookie_params(60 * 60 * 24 * 30);
-                session_regenerate_id(true);
-            }
-
-            header('Location: index.php');
-            exit;
-        } else {
-            $fout = 'E-mailadres of wachtwoord is onjuist.';
-        }
+    if($gebruiker && password_verify($wachtwoord, $gebruiker['wachtwoord'])){
+        $_SESSION['gebruiker_id'] = $gebruiker['id'];
+        $_SESSION['gebruiker_naam'] = $gebruiker['voornaam'];
+        header('Location: index.php');
+        exit;
+    } else{
+        $fout = 'E-mailadres of wachtwoord is onjuist.';
     }
 }
 ?>
@@ -49,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/stylesheet.css">
-    <title>Inloggen â€” Horizont Reizen</title>
+    <title>Inloggen - Horizont Reizen</title>
 </head>
 
 <body>
@@ -60,17 +36,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <h1 class="auth-title">Inloggen</h1>
 
             <div class="auth-card">
-                <?php if ($fout !== ''): ?>
-                    <div class="auth-melding auth-melding--fout">
-                        <p><?= htmlspecialchars($fout) ?></p>
-                    </div>
-                <?php endif; ?>
-
+               <?php  if ($_GET['registered'] ?? 0 == 1) echo "<p style='color:green'>Account aangemaakt! Je kunt nu inloggen.</p>"; ?>
+               <?php if (isset($fout)) echo "<p style='color:red'>$fout</p>"; ?>
                 <form action="login.php" method="POST">
                     <div class="auth-form-group">
                         <label for="email">E-mailadres</label>
-                        <input type="email" id="email" name="email"
-                               value="<?= htmlspecialchars($oud_email) ?>" required autofocus>
+                        <input type="email" id="email" name="email" required autofocus>
                     </div>
 
                     <div class="auth-form-group">
