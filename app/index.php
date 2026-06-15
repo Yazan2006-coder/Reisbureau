@@ -18,25 +18,36 @@
                 <p class="hero-description">Premium stedentrips door Europa, samengesteld door reisspecialisten. Vluchten, hotels en verzekeringen — alles in één booking.</p>
             </div>
             
-            <div class="search-form">
+            <form class="search-form" action="reizen.php" method="GET">
                 <div class="form-group">
                     <label for="destination">Bestemming</label>
-                    <input type="text" id="destination" placeholder="Waar wil je heen?">
+                    <input type="text" id="destination" name="bestemming" placeholder="Waar wil je heen?">
                 </div>
                 <div class="form-group">
                     <label for="departure">Vertrek vanaf</label>
-                    <input type="date" id="departure" placeholder="mm/dd/yyyy">
+                    <input type="date" id="departure" name="vertrek">
                 </div>
                 <div class="form-group">
                     <label for="flexible">Flexibel</label>
-                    <input type="text" id="flexible" placeholder="Exacte datum">
+                    <select id="flexible" name="flexibel">
+                        <option>Exacte datum</option>
+                        <option>± 1 dag</option>
+                        <option>± 3 dagen</option>
+                        <option>± 1 week</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label for="persons">Personen</label>
-                    <input type="text" id="persons" placeholder="2 personen">
+                    <select id="persons" name="personen">
+                        <option value="1">1 persoon</option>
+                        <option value="2" selected>2 personen</option>
+                        <option value="3">3 personen</option>
+                        <option value="4">4 personen</option>
+                        <option value="5">5 personen</option>
+                    </select>
                 </div>
-                <button class="search-btn">Zoeken</button>
-            </div>
+                <button type="submit" class="search-btn">Zoeken</button>
+            </form>
             
             <div class="benefits">
                 <div class="benefit-item">✓ 25 jaar ervaring</div>
@@ -54,7 +65,7 @@
                     <p class="recommended-label">AANBEVOLEN</p>
                     <h2>Onze meest geboekte citytrips</h2>
                 </div>
-                <a href="#" class="btn-view-all">Bekijk alles →</a>
+                <a href="reizen.php" class="btn-view-all">Bekijk alles →</a>
             </div>
             
             <div class="trips-grid">
