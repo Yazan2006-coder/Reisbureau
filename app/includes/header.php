@@ -13,6 +13,7 @@
             <div class="auth-buttons">
                 <?php if (isset($_SESSION['gebruiker_id'])): ?>
                     <span class="header-welkom">Hallo, <?= htmlspecialchars($_SESSION['gebruiker_naam']) ?></span>
+                    <a href="mijn-account.php" class="btn-login">Mijn Account</a>
                     <a href="logout.php" class="btn-login">Uitloggen</a>
                 <?php else: ?>
                     <a href="login.php" class="btn-login">Inloggen</a>
