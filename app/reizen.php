@@ -165,10 +165,9 @@ $aantal_reizen = count($alle_reizen);
                             <?php echo $beschikbaarheid_tag; ?>
                         </div>
                         <h3><?php echo htmlspecialchars($reis['bestemming']); ?></h3>
-                        <p class="trip-beschrijving"><?php echo htmlspecialchars(substr($reis['beschrijving'], 0, 80)) . '...'; ?></p>
                         <p class="trip-location">📍 <?php echo htmlspecialchars($reis['bestemming']); ?> · <?php echo $aantal_nachten; ?> <?php echo ($aantal_nachten == 1) ? 'nacht' : 'nachten'; ?></p>
+                        <div class="trip-rating">★★★★★ 4.6</div>
                         <div class="trip-price">vanaf <strong>€ <?php echo number_format($reis['prijs'], 2, ',', '.'); ?></strong> p.p.</div>
-                        <p class="available-places"><?php echo $vrije_plaatsen; ?> plaatsen beschikbaar</p>
                         <a href="reis-detail.php?id=<?php echo $reis['id']; ?>" class="btn btn-primary trip-btn">Bekijk & boek</a>
                     </div>
                     <?php

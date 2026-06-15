@@ -43,7 +43,10 @@ INSERT INTO reizen (bestemming, beschrijving, type_reis, prijs, kleur, startdatu
 ('Bali', 'Ontdek tropische stranden, tempels en rijstvelden in het paradijs van Indonesië. Perfect voor ontspanning en avontuur.', 'Strand', 799.99, '#27AE60', '2026-07-10', '2026-07-17', 15),
 ('Noorwegen', 'Beleef de fjorden, Northern Lights en wilde natuur. Een avontuurlijke reis door één van de mooiste landen ter wereld.', 'Avontuur', 1299.99, '#2E86DE', '2026-08-01', '2026-08-10', 12),
 ('Amsterdam', 'Ontdek grachten, musea en typische Nederlandse gezelligheid. De perfecte korte citytrip voor herhaling.', 'Citytrip', 349.99, '#F39C12', '2026-07-15', '2026-07-18', 25),
-('Marokko', 'Marrakech, Fez en de Sahara wachten op je. Een magische reis met exotische markten en prachtige landschappen.', 'Avontuur', 649.99, '#9B59B6', '2026-08-05', '2026-08-12', 18);
+('Marokko', 'Marrakech, Fez en de Sahara wachten op je. Een magische reis met exotische markten en prachtige landschappen.', 'Avontuur', 649.99, '#9B59B6', '2026-08-05', '2026-08-12', 18),
+('Parijs', 'Stad van het licht met de Eiffeltoren, het Louvre en gezellige terrasjes. Een romantische citytrip die je niet snel vergeet.', 'Citytrip', 689.00, '#2E86DE', '2026-07-20', '2026-07-24', 20),
+('Rome', 'Wandel langs het Colosseum, het Forum Romanum en gooi een muntje in de Trevifontein. Geschiedenis op elke hoek.', 'Citytrip', 849.00, '#E67E22', '2026-08-15', '2026-08-20', 18),
+('Praag', 'De Gouden Stad met de Karelsbrug, de astronomische klok en sfeervolle straatjes. Perfect voor een korte stedentrip.', 'Citytrip', 549.00, '#8E44AD', '2026-09-01', '2026-09-04', 22);
 
 -- Boekingen tabel
 CREATE TABLE IF NOT EXISTS boekingen (

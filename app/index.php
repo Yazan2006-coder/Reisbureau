@@ -70,8 +70,7 @@
             
             <div class="trips-grid">
                 <div class="trip-card">
-                    <div class="trip-image">
-                        <img src="Images/paris.jpg" alt="Parijs" >
+                    <div class="trip-image" style="background-color: #2E86DE;">
                         <div class="trip-label">PARIJS - EIFFELTOREN</div>
                     </div>
                     <div class="trip-tags">
@@ -83,11 +82,11 @@
                     <p class="trip-location">📍 Parijs, Frankrijk · 4 nachten</p>
                     <div class="trip-rating">★★★★★ 4.7 (142)</div>
                     <div class="trip-price">vanaf <strong>€ 689</strong> p.p.</div>
+                    <a href="reizen.php" class="btn btn-primary trip-btn">Bekijk & boek</a>
                 </div>
                 
                 <div class="trip-card">
-                    <div class="trip-image">
-                        <img src="Images/rome.jpg" alt="Rome">
+                    <div class="trip-image" style="background-color: #E67E22;">
                         <div class="trip-label">ROME - COLOSSEUM</div>
                     </div>
                     <div class="trip-tags">
@@ -99,11 +98,11 @@
                     <p class="trip-location">📍 Rome, Italië · 5 nachten</p>
                     <div class="trip-rating">★★★★★ 4.8 (211)</div>
                     <div class="trip-price">vanaf <strong>€ 849</strong> p.p.</div>
+                    <a href="reizen.php" class="btn btn-primary trip-btn">Bekijk & boek</a>
                 </div>
                 
                 <div class="trip-card">
-                    <div class="trip-image">
-                        <img src="Images/barcelona.jpg" alt="Barcelona">
+                    <div class="trip-image" style="background-color: #E74C3C;">
                         <div class="trip-label">BARCELONA - SAGRADA FAMILIA</div>
                     </div>
                     <div class="trip-tags">
@@ -115,28 +114,23 @@
                     <p class="trip-location">📍 Barcelona, Spanje · 4 nachten</p>
                     <div class="trip-rating">★★★★★ 4.6 (178)</div>
                     <div class="trip-price">vanaf <strong>€ 599</strong> p.p.</div>
+                    <a href="reizen.php" class="btn btn-primary trip-btn">Bekijk & boek</a>
                 </div>
-                
+
                 <div class="trip-card category-card">
-                    <div class="trip-image">
-                        <img src="Images/city.jpg" alt="Citytrip">
-                    </div>
+                    <div class="trip-image" style="background-color: #1b3a53;"></div>
                     <div class="category-label">Citytrip</div>
                     <p class="category-count">12 bestemmingen</p>
                 </div>
-                
+
                 <div class="trip-card category-card">
-                    <div class="trip-image">
-                        <img src="Images/historical.jpg" alt="Cultuur & geschiedenis">
-                    </div>
+                    <div class="trip-image" style="background-color: #6C5B7B;"></div>
                     <div class="category-label">Cultuur & geschiedenis</div>
                     <p class="category-count">8 bestemmingen</p>
                 </div>
-                
+
                 <div class="trip-card category-card">
-                    <div class="trip-image">
-                        <img src="Images/beach.jpg" alt="Zon & strand">
-                    </div>
+                    <div class="trip-image" style="background-color: #27AE60;"></div>
                     <div class="category-label">Zon & strand</div>
                     <p class="category-count">6 bestemmingen</p>
                 </div>
@@ -154,9 +148,8 @@
             
             <div class="offers-grid">
                 <div class="offer-card">
-                    <div class="offer-image">
-                        <img src="Images/barcelona2.jpg" alt="Barcelona" >
-                    <div class="offer-label">BARCELONA - SAGRADA FAMILIA</div>
+                    <div class="offer-image" style="background-color: #E74C3C;">
+                        <div class="offer-label">BARCELONA - SAGRADA FAMILIA</div>
                     </div>
                     <div class="offer-tags">
                         <span class="tag tag-default">Citytrip</span>
@@ -167,11 +160,11 @@
                     <p class="offer-location">📍 Barcelona, Spanje · 4 nachten</p>
                     <div class="offer-rating">★★★★★ 4.6 (178)</div>
                     <div class="offer-price">vanaf <strong>€ 599</strong> p.p.</div>
+                    <a href="reizen.php" class="btn btn-primary trip-btn">Bekijk & boek</a>
                 </div>
                 
                 <div class="offer-card">
-                    <div class="offer-image">
-                        <img src="Images/prague.jpg" alt="Praag">
+                    <div class="offer-image" style="background-color: #8E44AD;">
                         <div class="offer-label">PRAAG - KAREL BRUG</div>
                     </div>
                     <div class="offer-tags">
@@ -183,6 +176,7 @@
                     <p class="offer-location">📍 Praag, Tsjechië · 3 nachten</p>
                     <div class="offer-rating">★★★★☆ 4.5 (83)</div>
                     <div class="offer-price">vanaf <strong>€ 549</strong> p.p.</div>
+                    <a href="reizen.php" class="btn btn-primary trip-btn">Bekijk & boek</a>
                 </div>
             </div>
         </div>
