@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $beschrijving = $_POST['beschrijving'] ?? '';
             $type_reis = $_POST['type_reis'] ?? '';
             $prijs = $_POST['prijs'] ?? '';
-            $afbeelding_url = $_POST['afbeelding_url'] ?? '';
+            $kleur = $_POST['kleur'] ?? '';
             $startdatum = $_POST['startdatum'] ?? '';
             $einddatum = $_POST['einddatum'] ?? '';
             $max_personen = $_POST['max_personen'] ?? '';
@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $fout = 'Vul alstublieft alle verplichte velden in.';
             } else {
                 try {
-                    $sql = "INSERT INTO reizen (bestemming, beschrijving, type_reis, prijs, afbeelding_url, startdatum, einddatum, max_personen) 
+                    $sql = "INSERT INTO reizen (bestemming, beschrijving, type_reis, prijs, kleur, startdatum, einddatum, max_personen) 
                             VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
                     $stmt = $pdo->prepare($sql);
                     $stmt->execute([
@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         $beschrijving,
                         $type_reis,
                         $prijs,
-                        $afbeelding_url,
+                        $kleur,
                         $startdatum,
                         $einddatum,
                         $max_personen
@@ -74,7 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $beschrijving = $_POST['beschrijving'] ?? '';
             $type_reis = $_POST['type_reis'] ?? '';
             $prijs = $_POST['prijs'] ?? '';
-            $afbeelding_url = $_POST['afbeelding_url'] ?? '';
+            $kleur = $_POST['kleur'] ?? '';
             $startdatum = $_POST['startdatum'] ?? '';
             $einddatum = $_POST['einddatum'] ?? '';
             $max_personen = $_POST['max_personen'] ?? '';
@@ -84,7 +84,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $fout = 'Vul alstublieft alle verplichte velden in.';
             } else {
                 try {
-                    $sql = "UPDATE reizen SET bestemming = ?, beschrijving = ?, type_reis = ?, prijs = ?, afbeelding_url = ?, startdatum = ?, einddatum = ?, max_personen = ? 
+                    $sql = "UPDATE reizen SET bestemming = ?, beschrijving = ?, type_reis = ?, prijs = ?, kleur = ?, startdatum = ?, einddatum = ?, max_personen = ? 
                             WHERE id = ?";
                     $stmt = $pdo->prepare($sql);
                     $stmt->execute([
@@ -92,7 +92,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         $beschrijving,
                         $type_reis,
                         $prijs,
-                        $afbeelding_url,
+                        $kleur,
                         $startdatum,
                         $einddatum,
                         $max_personen,
@@ -207,10 +207,9 @@ if (isset($_GET['bewerk_id'])) {
                 </div>
                 
                 <div class="form-group">
-                    <label for="afbeelding_url">Afbeelding URL</label>
-                    <input type="text" id="afbeelding_url" name="afbeelding_url" 
-                           value="<?php echo $reis_bewerken ? htmlspecialchars($reis_bewerken['afbeelding_url']) : ''; ?>"
-                           placeholder="/images/bestemming.jpg">
+                    <label for="kleur">Kleur *</label>
+                    <input type="color" id="kleur" name="kleur" required
+                           value="<?php echo $reis_bewerken ? htmlspecialchars($reis_bewerken['kleur']) : '#3498db'; ?>">
                 </div>
                 
                 <div class="form-buttons">
