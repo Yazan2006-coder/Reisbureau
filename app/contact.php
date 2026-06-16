@@ -1,4 +1,36 @@
-<?php session_start(); ?>
+<?php
+session_start();
+require('db.php');
+
+$melding = '';
+$fout = '';
+
+// Verwerk het contactformulier
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $naam      = trim($_POST['name'] ?? '');
+    $email     = trim($_POST['email'] ?? '');
+    $telefoon  = trim($_POST['phone'] ?? '');
+    $onderwerp = trim($_POST['subject'] ?? '');
+    $bericht   = trim($_POST['message'] ?? '');
+
+    // Validatie (ook op de server, niet alleen in JavaScript)
+    if ($naam === '' || $email === '' || $onderwerp === '' || $bericht === '') {
+        $fout = 'Vul alstublieft alle verplichte velden in.';
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $fout = 'Voer een geldig e-mailadres in.';
+    } else {
+        try {
+            $sql = "INSERT INTO contactberichten (naam, email, telefoon, onderwerp, bericht)
+                    VALUES (?, ?, ?, ?, ?)";
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute([$naam, $email, $telefoon, $onderwerp, $bericht]);
+            $melding = 'Bedankt! Je bericht is verstuurd. We nemen zo snel mogelijk contact met je op.';
+        } catch (PDOException $e) {
+            $fout = 'Er ging iets mis bij het versturen. Probeer het later opnieuw.';
+        }
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="nl">
 
@@ -16,8 +48,15 @@
                 <h2>Neem contact met ons op</h2>
                 <p>Heb je vragen over onze reizen? We helpen je graag!</p>
             </div>
-            
-            <form class="contact-form-content" onsubmit="return verstuurFormulier()">
+
+            <?php if ($melding): ?>
+                <div class="alert alert-success"><?php echo htmlspecialchars($melding); ?></div>
+            <?php endif; ?>
+            <?php if ($fout): ?>
+                <div class="alert alert-danger"><?php echo htmlspecialchars($fout); ?></div>
+            <?php endif; ?>
+
+            <form class="contact-form-content" method="POST" action="contact.php" onsubmit="return verstuurFormulier()">
                 <div class="form-row">
                     <div class="form-group">
                         <label for="name">Naam *</label>
@@ -81,8 +120,8 @@
                 alert("Vul een bericht in!");
                 return false;
             }
-            // Als alles is ingevuld, geef een melding
-            alert("Je bericht is verstuurd! We nemen zo snel mogelijk contact met je op.");
+            // Alles is ingevuld: het formulier mag verstuurd worden naar de server
+            return true;
         }
     </script>
     <?php require('includes/footer.php'); ?>

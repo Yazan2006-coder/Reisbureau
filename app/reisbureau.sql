@@ -48,6 +48,17 @@ INSERT INTO reizen (bestemming, beschrijving, type_reis, prijs, kleur, startdatu
 ('Rome', 'Wandel langs het Colosseum, het Forum Romanum en gooi een muntje in de Trevifontein. Geschiedenis op elke hoek.', 'Citytrip', 849.00, '#E67E22', '2026-08-15', '2026-08-20', 18),
 ('Praag', 'De Gouden Stad met de Karelsbrug, de astronomische klok en sfeervolle straatjes. Perfect voor een korte stedentrip.', 'Citytrip', 549.00, '#8E44AD', '2026-09-01', '2026-09-04', 22);
 
+-- Contactberichten tabel
+CREATE TABLE IF NOT EXISTS contactberichten (
+    id            INT AUTO_INCREMENT PRIMARY KEY,
+    naam          VARCHAR(100) NOT NULL,
+    email         VARCHAR(255) NOT NULL,
+    telefoon      VARCHAR(30),
+    onderwerp     VARCHAR(150) NOT NULL,
+    bericht       TEXT NOT NULL,
+    aangemaakt_op DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
 -- Boekingen tabel
 CREATE TABLE IF NOT EXISTS boekingen (
     id              INT AUTO_INCREMENT PRIMARY KEY,
