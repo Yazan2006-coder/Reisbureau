@@ -82,7 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <label class="auth-remember">
                             <input type="checkbox" name="onthoud"> Onthoud mij
                         </label>
-                        <a href="#" class="auth-forgot">Wachtwoord vergeten?</a>
+                        <a href="wachtwoord-vergeten.php" class="auth-forgot">Wachtwoord vergeten?</a>
                     </div>
 
                     <button type="submit" class="auth-btn">Inloggen</button>
