@@ -92,8 +92,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 <div class="demo-accounts">
                     <p><strong>Demo-accounts:</strong></p>
-                    <p>Klant: demo@horizont.nl / demo1234</p>
-                    <p>Admin: admin@horizont.nl / admin1234</p>
+                    <p>Admin: testadmin@test.nl / test1234</p>
                 </div>
             </div>
         </div>

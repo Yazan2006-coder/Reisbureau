@@ -13,7 +13,7 @@ services:
     ports:
       - "8000:80"
     volumes:
-      - /Users/yazanuqla/Library/CloudStorage/OneDrive-ROCNijmegen/Reisbureau/Reisbureau/app:/var/www/html
+      - .:/var/www/html
     depends_on:
       - db
 
