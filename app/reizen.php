@@ -92,37 +92,36 @@ $aantal_reizen = count($alle_reizen);
 
                 <div class="filter-group">
                     <p class="filter-group-title">Max. prijs p.p.</p>
-                    <input type="range" class="price-range" min="200" max="1500" value="1500">
+                    <input type="range" id="prijs-filter" class="price-range" min="200" max="1500" value="1500" step="50">
                     <div class="price-labels">
                         <span>€ 200</span>
-                        <span>€ 1500</span>
+                        <span id="prijs-max-label">€ 1500</span>
                     </div>
                 </div>
 
                 <div class="filter-group">
                     <p class="filter-group-title">Beschikbaarheid</p>
                     <label class="filter-option">
-                        <input type="checkbox" checked> Alle
+                        <input type="radio" name="beschikbaarheid" value="alle" checked> Alle
                     </label>
                     <label class="filter-option">
-                        <input type="checkbox" checked> Beschikbaar
+                        <input type="radio" name="beschikbaarheid" value="beschikbaar"> Beschikbaar
                     </label>
                     <label class="filter-option">
-                        <input type="checkbox"> Bijna vol
+                        <input type="radio" name="beschikbaarheid" value="bijna"> Bijna vol
                     </label>
                 </div>
             </aside>
 
             <div class="results-section">
                 <div class="results-header">
-                    <h2><?php echo $aantal_reizen; ?> reizen gevonden</h2>
+                    <h2><span id="aantal-gevonden"><?php echo $aantal_reizen; ?></span> reizen gevonden</h2>
                     <div class="sort-group">
                         <span>Sorteren op</span>
-                        <select>
-                            <option>Aanbevolen</option>
-                            <option>Prijs (laag-hoog)</option>
-                            <option>Prijs (hoog-laag)</option>
-                            <option>Beoordeling</option>
+                        <select id="sorteer-select">
+                            <option value="aanbevolen">Aanbevolen</option>
+                            <option value="prijs-laag">Prijs (laag-hoog)</option>
+                            <option value="prijs-hoog">Prijs (hoog-laag)</option>
                         </select>
                     </div>
                 </div>
@@ -154,9 +153,21 @@ $aantal_reizen = count($alle_reizen);
                             $eind = new DateTime($reis['einddatum']);
                             $interval = $start->diff($eind);
                             $aantal_nachten = $interval->days;
+
+                            // Status in een simpel woord voor het JavaScript-filter
+                            if ($vrije_plaatsen == 0) {
+                                $status = 'volzet';
+                            } elseif ($beschikbaarheid_procent >= 70) {
+                                $status = 'bijna';
+                            } else {
+                                $status = 'beschikbaar';
+                            }
                     ?>
                     <?php $kleur = !empty($reis['kleur']) ? $reis['kleur'] : '#1b3a53'; ?>
-                    <div class="trip-card" data-type="<?php echo htmlspecialchars($reis['type_reis']); ?>">
+                    <div class="trip-card"
+                         data-type="<?php echo htmlspecialchars($reis['type_reis']); ?>"
+                         data-prijs="<?php echo $reis['prijs']; ?>"
+                         data-status="<?php echo $status; ?>">
                         <div class="trip-image" style="background-color: <?php echo htmlspecialchars($kleur); ?>;">
                             <div class="trip-label"><?php echo strtoupper(htmlspecialchars($reis['bestemming'])); ?></div>
                         </div>
@@ -198,43 +209,104 @@ $aantal_reizen = count($alle_reizen);
     <?php require('includes/footer.php'); ?>
 
     <script>
-        // Filter op type reis met de radio buttons
-        var typeRadios = document.querySelectorAll('input[name="type"]');
+        // Alle kaarten en de filter-onderdelen ophalen
         var tripCards = document.querySelectorAll('.trip-card');
+        var grid = document.getElementById('reizen-grid');
+        var prijsFilter = document.getElementById('prijs-filter');
+        var prijsLabel = document.getElementById('prijs-max-label');
+        var sorteerSelect = document.getElementById('sorteer-select');
+        var aantalLabel = document.getElementById('aantal-gevonden');
 
-        typeRadios.forEach(function(radio) {
-            radio.addEventListener('change', function() {
-                var gekozenType = this.value;
+        // Deze functie past alle filters tegelijk toe
+        function pasFiltersToe() {
+            // Gekozen type ophalen
+            var gekozenType = document.querySelector('input[name="type"]:checked').value;
+            // Gekozen beschikbaarheid ophalen
+            var gekozenStatus = document.querySelector('input[name="beschikbaarheid"]:checked').value;
+            // Maximale prijs ophalen
+            var maxPrijs = parseInt(prijsFilter.value);
 
-                tripCards.forEach(function(card) {
-                    var kaartType = card.getAttribute('data-type');
+            var aantalZichtbaar = 0;
 
-                    if (gekozenType === 'Alle types' || kaartType === gekozenType) {
-                        card.style.display = 'block';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
+            tripCards.forEach(function(card) {
+                var kaartType = card.getAttribute('data-type');
+                var kaartPrijs = parseFloat(card.getAttribute('data-prijs'));
+                var kaartStatus = card.getAttribute('data-status');
+
+                // Standaard tonen we de kaart
+                var tonen = true;
+
+                // Filter op type
+                if (gekozenType !== 'Alle types' && kaartType !== gekozenType) {
+                    tonen = false;
+                }
+                // Filter op prijs
+                if (kaartPrijs > maxPrijs) {
+                    tonen = false;
+                }
+                // Filter op beschikbaarheid
+                if (gekozenStatus === 'beschikbaar' && kaartStatus !== 'beschikbaar') {
+                    tonen = false;
+                }
+                if (gekozenStatus === 'bijna' && kaartStatus !== 'bijna') {
+                    tonen = false;
+                }
+
+                if (tonen) {
+                    card.style.display = 'flex';
+                    aantalZichtbaar++;
+                } else {
+                    card.style.display = 'none';
+                }
             });
+
+            // Het aantal gevonden reizen bovenaan bijwerken
+            aantalLabel.textContent = aantalZichtbaar;
+        }
+
+        // Sorteren op prijs
+        function sorteerKaarten() {
+            var keuze = sorteerSelect.value;
+            // Maak een gewone lijst van de kaarten
+            var lijst = Array.prototype.slice.call(tripCards);
+
+            lijst.sort(function(a, b) {
+                var prijsA = parseFloat(a.getAttribute('data-prijs'));
+                var prijsB = parseFloat(b.getAttribute('data-prijs'));
+
+                if (keuze === 'prijs-laag') {
+                    return prijsA - prijsB;
+                } else if (keuze === 'prijs-hoog') {
+                    return prijsB - prijsA;
+                }
+                return 0;
+            });
+
+            // Zet de kaarten in de nieuwe volgorde terug in de grid
+            lijst.forEach(function(card) {
+                grid.appendChild(card);
+            });
+        }
+
+        // Luister naar alle filter-knoppen
+        document.querySelectorAll('input[name="type"]').forEach(function(radio) {
+            radio.addEventListener('change', pasFiltersToe);
+        });
+        document.querySelectorAll('input[name="beschikbaarheid"]').forEach(function(radio) {
+            radio.addEventListener('change', pasFiltersToe);
         });
 
-        // Zoekfunctie: filter op bestemming naam
-        var zoekBtn = document.querySelector('.search-btn');
-        var destinationInput = document.getElementById('destination');
-
-        if (zoekBtn && destinationInput) {
-            zoekBtn.addEventListener('click', function() {
-                var zoekterm = destinationInput.value.toLowerCase().trim();
-
-                tripCards.forEach(function(card) {
-                    var naam = card.querySelector('h3').textContent.toLowerCase();
-                    if (zoekterm === '' || naam.includes(zoekterm)) {
-                        card.style.display = 'block';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
+        // Prijs-schuif: label bijwerken en filteren
+        if (prijsFilter) {
+            prijsFilter.addEventListener('input', function() {
+                prijsLabel.textContent = '€ ' + prijsFilter.value;
+                pasFiltersToe();
             });
+        }
+
+        // Sorteren
+        if (sorteerSelect) {
+            sorteerSelect.addEventListener('change', sorteerKaarten);
         }
     </script>
 </body>

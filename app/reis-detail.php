@@ -214,19 +214,19 @@ $kleur = !empty($reis['kleur']) ? $reis['kleur'] : '#1b3a53';
                     <?php if (isset($_SESSION['gebruiker_id'])): ?>
                         <div class="recensie-formulier">
                             <h3>Jouw recensie plaatsen</h3>
-                            <form method="POST" id="recensie-form">
+                            <form method="POST">
                                 <input type="hidden" name="actie" value="recensie">
 
                                 <div class="form-group">
-                                    <label>Beoordeling</label>
-                                    <div class="ster-keuze" id="ster-keuze">
-                                        <span data-waarde="1">★</span>
-                                        <span data-waarde="2">★</span>
-                                        <span data-waarde="3">★</span>
-                                        <span data-waarde="4">★</span>
-                                        <span data-waarde="5">★</span>
-                                    </div>
-                                    <input type="hidden" name="beoordeling" id="beoordeling-waarde" value="0">
+                                    <label for="beoordeling">Beoordeling</label>
+                                    <select name="beoordeling" id="beoordeling" required>
+                                        <option value="">-- Kies aantal sterren --</option>
+                                        <option value="5">★★★★★ (5)</option>
+                                        <option value="4">★★★★ (4)</option>
+                                        <option value="3">★★★ (3)</option>
+                                        <option value="2">★★ (2)</option>
+                                        <option value="1">★ (1)</option>
+                                    </select>
                                 </div>
 
                                 <div class="form-group">
@@ -306,50 +306,6 @@ $kleur = !empty($reis['kleur']) ? $reis['kleur'] : '#1b3a53';
                 var aantal = parseInt(this.value);
                 var totaal = aantal * prijsPerPersoon;
                 totaalBedrag.textContent = '€ ' + totaal.toFixed(2).replace('.', ',');
-            });
-        }
-
-        // Sterren klikken voor recensie
-        var sterren = document.querySelectorAll('#ster-keuze span');
-        var beoordelingInput = document.getElementById('beoordeling-waarde');
-
-        sterren.forEach(function(ster) {
-            ster.addEventListener('click', function() {
-                var waarde = parseInt(this.getAttribute('data-waarde'));
-                beoordelingInput.value = waarde;
-
-                // Kleur de sterren
-                sterren.forEach(function(s, index) {
-                    if (index < waarde) {
-                        s.style.color = '#f39c12';
-                    } else {
-                        s.style.color = '#ccc';
-                    }
-                });
-            });
-
-            // Hover effect
-            ster.addEventListener('mouseover', function() {
-                var waarde = parseInt(this.getAttribute('data-waarde'));
-                sterren.forEach(function(s, index) {
-                    if (index < waarde) {
-                        s.style.color = '#f39c12';
-                    } else {
-                        s.style.color = '#ccc';
-                    }
-                });
-            });
-        });
-
-        // Validatie formulier
-        var recensieForm = document.getElementById('recensie-form');
-        if (recensieForm) {
-            recensieForm.addEventListener('submit', function(e) {
-                var beoordeling = document.getElementById('beoordeling-waarde').value;
-                if (beoordeling == 0) {
-                    e.preventDefault();
-                    alert('Kies een beoordeling door op de sterren te klikken!');
-                }
             });
         }
     </script>
