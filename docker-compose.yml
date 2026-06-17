@@ -6,14 +6,18 @@ services:
     build:
       context: .
       # pipe symbol op volgende regel laten staan!!!
-      dockerfile_inline: |
+      dockerfile_inline: | 
         FROM php:8.4-apache
         RUN docker-php-ext-install pdo pdo_mysql
     restart: always
     ports:
       - "8000:80"
     volumes:
+<<<<<<< Updated upstream:docker-compose.yml
       - C:\Users\mickv\OneDrive - ROC Nijmegen\Prive\School\Webapplicatie 2\Reisbureau:/var/www/html
+=======
+      - .:/var/www/html
+>>>>>>> Stashed changes:app/docker-compose.yml
     depends_on:
       - db
 
