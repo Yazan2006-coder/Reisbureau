@@ -12,15 +12,11 @@ services:
     restart: always
     ports:
       - "8000:80"
-    volumes:
-<<<<<<< Updated upstream:docker-compose.yml
-      - C:\Users\mickv\OneDrive - ROC Nijmegen\Prive\School\Webapplicatie 2\Reisbureau:/var/www/html
-=======
-      - .:/var/www/html
->>>>>>> Stashed changes:app/docker-compose.yml
+      
     depends_on:
       - db
-
+    volumes:
+      - .:/var/www/html
   db:
     # Bart beun oplossing voor MAC OS
     # platform: linux/x86_64
