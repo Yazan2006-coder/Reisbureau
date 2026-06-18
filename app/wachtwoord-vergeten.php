@@ -59,17 +59,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <h1 class="auth-title">Wachtwoord vergeten</h1>
 
             <div class="auth-card">
-                <?php if ($melding !== ''): ?>
+                <?php if ($melding !== ''){ ?>
                     <div class="auth-melding">
-                        <p><?= htmlspecialchars($melding) ?></p>
+                        <p><?= ($melding) ?></p>
                     </div>
                     <p class="auth-switch"><a href="login.php">Naar inloggen</a></p>
-                <?php else: ?>
-                    <?php if ($fout !== ''): ?>
+                <?php }else{ ?>
+                    <?php if ($fout !== ''){ ?>
                         <div class="auth-melding auth-melding--fout">
-                            <p><?= htmlspecialchars($fout) ?></p>
+                            <p><?= ($fout) ?></p>
                         </div>
-                    <?php endif; ?>
+                    <?php } ?>
 
                     <p class="auth-uitleg">Vul je e-mailadres en een nieuw wachtwoord in.</p>
 
@@ -93,7 +93,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </form>
 
                     <p class="auth-switch">Weet je het weer? <a href="login.php">Inloggen</a></p>
-                <?php endif; ?>
+                <?php } ?>
             </div>
         </div>
     </section>

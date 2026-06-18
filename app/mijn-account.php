@@ -85,12 +85,12 @@ foreach ($boekingen as $boeking) {
         <div class="account-container">
             <h1 class="account-titel">Mijn Account</h1>
 
-            <?php if ($melding): ?>
-                <div class="alert alert-success"><?php echo htmlspecialchars($melding); ?></div>
-            <?php endif; ?>
-            <?php if ($fout): ?>
-                <div class="alert alert-danger"><?php echo htmlspecialchars($fout); ?></div>
-            <?php endif; ?>
+            <?php if ($melding){ ?>
+                <div class="alert alert-success"><?php echo ($melding); ?></div>
+            <?php } ?>
+            <?php if ($fout){ ?>
+                <div class="alert alert-danger"><?php echo ($fout); ?></div>
+            <?php } ?>
 
             <!-- Persoonlijke gegevens -->
             <div class="account-kaart">
@@ -98,11 +98,11 @@ foreach ($boekingen as $boeking) {
                 <div class="account-gegevens">
                     <div class="gegeven-rij">
                         <span class="gegeven-label">Naam</span>
-                        <span class="gegeven-waarde"><?php echo htmlspecialchars($gebruiker['voornaam'] . ' ' . $gebruiker['achternaam']); ?></span>
+                        <span class="gegeven-waarde"><?php echo ($gebruiker['voornaam'] . ' ' . $gebruiker['achternaam']); ?></span>
                     </div>
                     <div class="gegeven-rij">
                         <span class="gegeven-label">E-mailadres</span>
-                        <span class="gegeven-waarde"><?php echo htmlspecialchars($gebruiker['email']); ?></span>
+                        <span class="gegeven-waarde"><?php echo ($gebruiker['email']); ?></span>
                     </div>
                     <div class="gegeven-rij">
                         <span class="gegeven-label">Lid sinds</span>
@@ -123,10 +123,10 @@ foreach ($boekingen as $boeking) {
                     <div class="boekingen-lijst">
                         <?php foreach ($actieve_boekingen as $boeking): ?>
                             <?php $boeking_kleur = !empty($boeking['kleur']) ? $boeking['kleur'] : '#1b3a53'; ?>
-                            <div class="boeking-kaart" style="border-left: 4px solid <?php echo htmlspecialchars($boeking_kleur); ?>;">
+                            <div class="boeking-kaart" style="border-left: 4px solid <?php echo ($boeking_kleur); ?>;">
                                 <div class="boeking-info">
-                                    <h3><?php echo htmlspecialchars($boeking['bestemming']); ?></h3>
-                                    <p class="boeking-type"><?php echo htmlspecialchars($boeking['type_reis']); ?></p>
+                                    <h3><?php echo ($boeking['bestemming']); ?></h3>
+                                    <p class="boeking-type"><?php echo ($boeking['type_reis']); ?></p>
                                     <p>📅 <?php echo date('d-m-Y', strtotime($boeking['startdatum'])); ?> → <?php echo date('d-m-Y', strtotime($boeking['einddatum'])); ?></p>
                                     <p>👥 <?php echo $boeking['aantal_personen']; ?> persoon<?php echo $boeking['aantal_personen'] > 1 ? 'en' : ''; ?></p>
                                     <p class="boeking-prijs">Totaal: <strong>€ <?php echo number_format($boeking['totaal_prijs'], 2, ',', '.'); ?></strong></p>
@@ -156,7 +156,7 @@ foreach ($boekingen as $boeking) {
                         <?php foreach ($geannuleerde_boekingen as $boeking): ?>
                             <div class="boeking-kaart boeking-geannuleerd">
                                 <div class="boeking-info">
-                                    <h3><?php echo htmlspecialchars($boeking['bestemming']); ?></h3>
+                                    <h3><?php echo ($boeking['bestemming']); ?></h3>
                                     <p>📅 <?php echo date('d-m-Y', strtotime($boeking['startdatum'])); ?> → <?php echo date('d-m-Y', strtotime($boeking['einddatum'])); ?></p>
                                     <p>👥 <?php echo $boeking['aantal_personen']; ?> persoon<?php echo $boeking['aantal_personen'] > 1 ? 'en' : ''; ?></p>
                                     <span class="status-badge status-geannuleerd">Geannuleerd</span>

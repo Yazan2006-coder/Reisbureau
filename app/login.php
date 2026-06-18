@@ -60,17 +60,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <h1 class="auth-title">Inloggen</h1>
 
             <div class="auth-card">
-                <?php if ($fout !== ''): ?>
+                <?php if ($fout !== ''){ ?>
                     <div class="auth-melding auth-melding--fout">
-                        <p><?= htmlspecialchars($fout) ?></p>
+                        <p><?= ($fout) ?></p>
                     </div>
-                <?php endif; ?>
+                <?php } ?>
 
                 <form action="login.php" method="POST">
                     <div class="auth-form-group">
                         <label for="email">E-mailadres</label>
                         <input type="email" id="email" name="email"
-                               value="<?= htmlspecialchars($oud_email) ?>" required autofocus>
+                               value="<?= ($oud_email) ?>" required autofocus>
                     </div>
 
                     <div class="auth-form-group">

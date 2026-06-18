@@ -82,32 +82,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <h1 class="auth-title">Account aanmaken</h1>
 
             <div class="auth-card">
-                <?php if (!empty($fouten)): ?>
+                <?php if (!empty($fouten)){ ?>
                     <div class="auth-melding auth-melding--fout">
-                        <?php foreach ($fouten as $fout): ?>
-                            <p><?= htmlspecialchars($fout) ?></p>
-                        <?php endforeach; ?>
+                        <?php foreach ($fouten as $fout){ ?>
+                            <p><?= ($fout) ?></p>
+                        <?php } ?>
                     </div>
-                <?php endif; ?>
+                <?php } ?>
 
                 <form action="register.php" method="POST">
                     <div class="auth-form-row">
                         <div class="auth-form-group">
                             <label for="voornaam">Voornaam</label>
                             <input type="text" id="voornaam" name="voornaam"
-                                   value="<?= htmlspecialchars($oud['voornaam']) ?>" required>
+                                   value="<?= ($oud['voornaam']) ?>" required>
                         </div>
                         <div class="auth-form-group">
                             <label for="achternaam">Achternaam</label>
                             <input type="text" id="achternaam" name="achternaam"
-                                   value="<?= htmlspecialchars($oud['achternaam']) ?>" required>
+                                   value="<?= ($oud['achternaam']) ?>" required>
                         </div>
                     </div>
 
                     <div class="auth-form-group">
                         <label for="email">E-mailadres</label>
                         <input type="email" id="email" name="email"
-                               value="<?= htmlspecialchars($oud['email']) ?>" required>
+                               value="<?= ($oud['email']) ?>" required>
                     </div>
 
                     <div class="auth-form-group">

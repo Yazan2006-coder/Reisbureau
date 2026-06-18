@@ -23,6 +23,7 @@ $aantal_reizen = count($alle_reizen);
 ?>
 <!DOCTYPE html>
 <html lang="nl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,6 +33,7 @@ $aantal_reizen = count($alle_reizen);
     <link rel="stylesheet" href="css/stylesheet.css">
     <title>Reizen – Horizont Reizen</title>
 </head>
+
 <body>
     <?php require('includes/header.php'); ?>
 
@@ -39,7 +41,8 @@ $aantal_reizen = count($alle_reizen);
         <form class="search-form" method="GET" action="reizen.php">
             <div class="form-group">
                 <label for="destination">Bestemming</label>
-                <input type="text" id="destination" name="bestemming" placeholder="Waar wil je heen?" value="<?php echo htmlspecialchars($zoek_bestemming); ?>">
+                <input type="text" id="destination" name="bestemming" placeholder="Waar wil je heen?"
+                    value="<?php echo ($zoek_bestemming); ?>">
             </div>
             <div class="form-group">
                 <label for="departure">Vertrek vanaf</label>
@@ -92,7 +95,8 @@ $aantal_reizen = count($alle_reizen);
 
                 <div class="filter-group">
                     <p class="filter-group-title">Max. prijs p.p.</p>
-                    <input type="range" id="prijs-filter" class="price-range" min="200" max="1500" value="1500" step="50">
+                    <input type="range" id="prijs-filter" class="price-range" min="200" max="1500" value="1500"
+                        step="50">
                     <div class="price-labels">
                         <span>€ 200</span>
                         <span id="prijs-max-label">€ 1500</span>
@@ -129,8 +133,8 @@ $aantal_reizen = count($alle_reizen);
                 <div class="reizen-grid" id="reizen-grid">
                     <?php
                     // Controleer of er reizen zijn
-                    if ($aantal_reizen > 0):
-                        foreach ($alle_reizen as $reis):
+                    if ($aantal_reizen > 0) {
+                        foreach ($alle_reizen as $reis) {
                             // Bereken aantal vrije plaatsen
                             $vrije_plaatsen = $reis['max_personen'] - $reis['geboekt_personen'];
                             if ($reis['max_personen'] > 0) {
@@ -140,13 +144,13 @@ $aantal_reizen = count($alle_reizen);
                             }
 
                             // Bepaal beschikbaarheidsstatus
-                            if ($vrije_plaatsen == 0):
+                            if ($vrije_plaatsen == 0) {
                                 $beschikbaarheid_tag = '<span class="tag tag-volzet">Volzet</span>';
-                            elseif ($beschikbaarheid_procent >= 70):
+                            } elseif ($beschikbaarheid_procent >= 70) {
                                 $beschikbaarheid_tag = '<span class="tag tag-almost">Bijna vol</span>';
-                            else:
+                            } else {
                                 $beschikbaarheid_tag = '<span class="tag tag-available">Beschikbaar</span>';
-                            endif;
+                            }
 
                             // Bereken aantal nachten
                             $start = new DateTime($reis['startdatum']);
@@ -162,50 +166,52 @@ $aantal_reizen = count($alle_reizen);
                             } else {
                                 $status = 'beschikbaar';
                             }
-                    ?>
-                    <?php $kleur = !empty($reis['kleur']) ? $reis['kleur'] : '#1b3a53'; ?>
-                    <div class="trip-card"
-                         data-type="<?php echo htmlspecialchars($reis['type_reis']); ?>"
-                         data-prijs="<?php echo $reis['prijs']; ?>"
-                         data-status="<?php echo $status; ?>">
-                        <div class="trip-image" style="background-color: <?php echo htmlspecialchars($kleur); ?>;">
-                            <div class="trip-label"><?php echo strtoupper(htmlspecialchars($reis['bestemming'])); ?></div>
+                            ?>
+                            <?php $kleur = !empty($reis['kleur']) ? $reis['kleur'] : '#1b3a53'; ?>
+                            <div class="trip-card" data-type="<?php echo ($reis['type_reis']); ?>"
+                                data-prijs="<?php echo $reis['prijs']; ?>" data-status="<?php echo $status; ?>">
+                                <div class="trip-image" style="background-color: <?php echo ($kleur); ?>;">
+                                    <div class="trip-label"><?php echo strtoupper(($reis['bestemming'])); ?></div>
+                                </div>
+                                <div class="trip-tags">
+                                    <span class="tag tag-default"><?php echo ($reis['type_reis']); ?></span>
+                                    <?php echo $beschikbaarheid_tag; ?>
+                                </div>
+                                <h3><?php echo ($reis['bestemming']); ?></h3>
+                                <p class="trip-location">📍 <?php echo ($reis['bestemming']); ?> ·
+                                    <?php echo $aantal_nachten; ?>         <?php echo ($aantal_nachten == 1) ? 'nacht' : 'nachten'; ?>
+                                </p>
+                                <div class="trip-rating">★★★★★ 4.6</div>
+                                <div class="trip-price">vanaf <strong>€
+                                        <?php echo number_format($reis['prijs'], 2, ',', '.'); ?></strong> p.p.</div>
+                                <a href="reis-detail.php?id=<?php echo $reis['id']; ?>" class="btn btn-primary trip-btn">Bekijk
+                                    & boek</a>
+                            </div>
+                            <?php
+                        }
+                    } else {
+                        ?>
+                        <div class="no-reizen-message">
+                            <h3>Er zijn momenteel geen reizen beschikbaar</h3>
+                            <p>Kom later terug!</p>
                         </div>
-                        <div class="trip-tags">
-                            <span class="tag tag-default"><?php echo htmlspecialchars($reis['type_reis']); ?></span>
-                            <?php echo $beschikbaarheid_tag; ?>
-                        </div>
-                        <h3><?php echo htmlspecialchars($reis['bestemming']); ?></h3>
-                        <p class="trip-location">📍 <?php echo htmlspecialchars($reis['bestemming']); ?> · <?php echo $aantal_nachten; ?> <?php echo ($aantal_nachten == 1) ? 'nacht' : 'nachten'; ?></p>
-                        <div class="trip-rating">★★★★★ 4.6</div>
-                        <div class="trip-price">vanaf <strong>€ <?php echo number_format($reis['prijs'], 2, ',', '.'); ?></strong> p.p.</div>
-                        <a href="reis-detail.php?id=<?php echo $reis['id']; ?>" class="btn btn-primary trip-btn">Bekijk & boek</a>
-                    </div>
-                    <?php
-                        endforeach;
-                    else:
-                    ?>
-                    <div class="no-reizen-message">
-                        <h3>Er zijn momenteel geen reizen beschikbaar</h3>
-                        <p>Kom later terug!</p>
-                    </div>
-                    <?php
-                    endif;
+                        <?php
+                    }
                     ?>
                 </div>
             </div>
         </div>
     </section>
-    
-    <?php 
+
+    <?php
     // Toon admin link als gebruiker admin is
-    if (isset($_SESSION['gebruiker_rol']) && $_SESSION['gebruiker_rol'] === 'admin'): 
-    ?>
-    <section class="admin-link-section">
-        <a href="admin/reizen.php">→ Admin Panel: Reizen beheren</a>
-    </section>
+    if (isset($_SESSION['gebruiker_rol']) && $_SESSION['gebruiker_rol'] === 'admin'):
+        ?>
+        <section class="admin-link-section">
+            <a href="admin/reizen.php">→ Admin Panel: Reizen beheren</a>
+        </section>
     <?php endif; ?>
-    
+
     <?php require('includes/footer.php'); ?>
 
     <script>
@@ -228,7 +234,7 @@ $aantal_reizen = count($alle_reizen);
 
             var aantalZichtbaar = 0;
 
-            tripCards.forEach(function(card) {
+            tripCards.forEach(function (card) {
                 var kaartType = card.getAttribute('data-type');
                 var kaartPrijs = parseFloat(card.getAttribute('data-prijs'));
                 var kaartStatus = card.getAttribute('data-status');
@@ -270,7 +276,7 @@ $aantal_reizen = count($alle_reizen);
             // Maak een gewone lijst van de kaarten
             var lijst = Array.prototype.slice.call(tripCards);
 
-            lijst.sort(function(a, b) {
+            lijst.sort(function (a, b) {
                 var prijsA = parseFloat(a.getAttribute('data-prijs'));
                 var prijsB = parseFloat(b.getAttribute('data-prijs'));
 
@@ -283,22 +289,22 @@ $aantal_reizen = count($alle_reizen);
             });
 
             // Zet de kaarten in de nieuwe volgorde terug in de grid
-            lijst.forEach(function(card) {
+            lijst.forEach(function (card) {
                 grid.appendChild(card);
             });
         }
 
         // Luister naar alle filter-knoppen
-        document.querySelectorAll('input[name="type"]').forEach(function(radio) {
+        document.querySelectorAll('input[name="type"]').forEach(function (radio) {
             radio.addEventListener('change', pasFiltersToe);
         });
-        document.querySelectorAll('input[name="beschikbaarheid"]').forEach(function(radio) {
+        document.querySelectorAll('input[name="beschikbaarheid"]').forEach(function (radio) {
             radio.addEventListener('change', pasFiltersToe);
         });
 
         // Prijs-schuif: label bijwerken en filteren
         if (prijsFilter) {
-            prijsFilter.addEventListener('input', function() {
+            prijsFilter.addEventListener('input', function () {
                 prijsLabel.textContent = '€ ' + prijsFilter.value;
                 pasFiltersToe();
             });
@@ -310,4 +316,5 @@ $aantal_reizen = count($alle_reizen);
         }
     </script>
 </body>
+
 </html>

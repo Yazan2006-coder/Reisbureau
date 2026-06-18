@@ -49,12 +49,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <p>Heb je vragen over onze reizen? We helpen je graag!</p>
             </div>
 
-            <?php if ($melding): ?>
-                <div class="alert alert-success"><?php echo htmlspecialchars($melding); ?></div>
-            <?php endif; ?>
-            <?php if ($fout): ?>
-                <div class="alert alert-danger"><?php echo htmlspecialchars($fout); ?></div>
-            <?php endif; ?>
+            <?php if ($melding){ ?>
+                <div class="alert alert-success"><?php echo ($melding); ?></div>
+            <?php } ?>
+            <?php if ($fout){ ?>
+                <div class="alert alert-danger"><?php echo ($fout); ?></div>
+            <?php } ?>
 
             <form class="contact-form-content" method="POST" action="contact.php" onsubmit="return verstuurFormulier()">
                 <div class="form-row">

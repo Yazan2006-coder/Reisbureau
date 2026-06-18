@@ -140,13 +140,13 @@ if (isset($_GET['bewerk_id'])) {
             <a href="../reizen.php">← Terug naar reizen</a>
         </div>
         
-        <?php if ($melding): ?>
-            <div class="alert alert-success"><?php echo htmlspecialchars($melding); ?></div>
-        <?php endif; ?>
+        <?php if ($melding){?>
+            <div class="alert alert-success"><?php echo ($melding); ?></div>
+        <?php } ?>
         
-        <?php if ($fout): ?>
-            <div class="alert alert-danger"><?php echo htmlspecialchars($fout); ?></div>
-        <?php endif; ?>
+        <?php if ($fout){ ?>
+            <div class="alert alert-danger"><?php echo ($fout); ?></div>
+        <?php } ?>
         
         <!-- FORMULIER VOOR TOEVOEGEN / BEWERKEN -->
         <div class="form-section">
@@ -154,15 +154,15 @@ if (isset($_GET['bewerk_id'])) {
             
             <form method="POST">
                 <input type="hidden" name="actie" value="<?php echo $reis_bewerken ? 'bewerken' : 'toevoegen'; ?>">
-                <?php if ($reis_bewerken): ?>
+                <?php if ($reis_bewerken){ ?>
                     <input type="hidden" name="reis_id" value="<?php echo $reis_bewerken['id']; ?>">
-                <?php endif; ?>
+                <?php } ?>
                 
                 <div class="form-row">
                     <div class="form-group">
                         <label for="bestemming">Bestemming *</label>
                         <input type="text" id="bestemming" name="bestemming" required 
-                               value="<?php echo $reis_bewerken ? htmlspecialchars($reis_bewerken['bestemming']) : ''; ?>">
+                               value="<?php echo $reis_bewerken ? ($reis_bewerken['bestemming']) : ''; ?>">
                     </div>
                     <div class="form-group">
                         <label for="type_reis">Type reis *</label>
@@ -177,19 +177,19 @@ if (isset($_GET['bewerk_id'])) {
                 
                 <div class="form-group">
                     <label for="beschrijving">Beschrijving *</label>
-                    <textarea id="beschrijving" name="beschrijving" required><?php echo $reis_bewerken ? htmlspecialchars($reis_bewerken['beschrijving']) : ''; ?></textarea>
+                    <textarea id="beschrijving" name="beschrijving" required><?php echo $reis_bewerken ? ($reis_bewerken['beschrijving']) : ''; ?></textarea>
                 </div>
                 
                 <div class="form-row">
                     <div class="form-group">
                         <label for="prijs">Prijs (€) *</label>
                         <input type="number" id="prijs" name="prijs" step="0.01" min="0" required 
-                               value="<?php echo $reis_bewerken ? htmlspecialchars($reis_bewerken['prijs']) : ''; ?>">
+                               value="<?php echo $reis_bewerken ? ($reis_bewerken['prijs']) : ''; ?>">
                     </div>
                     <div class="form-group">
                         <label for="max_personen">Max personen *</label>
                         <input type="number" id="max_personen" name="max_personen" min="1" required 
-                               value="<?php echo $reis_bewerken ? htmlspecialchars($reis_bewerken['max_personen']) : ''; ?>">
+                               value="<?php echo $reis_bewerken ? ($reis_bewerken['max_personen']) : ''; ?>">
                     </div>
                 </div>
                 
@@ -197,28 +197,28 @@ if (isset($_GET['bewerk_id'])) {
                     <div class="form-group">
                         <label for="startdatum">Startdatum *</label>
                         <input type="date" id="startdatum" name="startdatum" required 
-                               value="<?php echo $reis_bewerken ? htmlspecialchars($reis_bewerken['startdatum']) : ''; ?>">
+                               value="<?php echo $reis_bewerken ? ($reis_bewerken['startdatum']) : ''; ?>">
                     </div>
                     <div class="form-group">
                         <label for="einddatum">Einddatum *</label>
                         <input type="date" id="einddatum" name="einddatum" required 
-                               value="<?php echo $reis_bewerken ? htmlspecialchars($reis_bewerken['einddatum']) : ''; ?>">
+                               value="<?php echo $reis_bewerken ? ($reis_bewerken['einddatum']) : ''; ?>">
                     </div>
                 </div>
                 
                 <div class="form-group">
                     <label for="kleur">Kleur *</label>
                     <input type="color" id="kleur" name="kleur" required
-                           value="<?php echo $reis_bewerken ? htmlspecialchars($reis_bewerken['kleur']) : '#3498db'; ?>">
+                           value="<?php echo $reis_bewerken ? ($reis_bewerken['kleur']) : '#3498db'; ?>">
                 </div>
                 
                 <div class="form-buttons">
                     <button type="submit" class="btn btn-primary">
                         <?php echo $reis_bewerken ? '💾 Wijzigingen opslaan' : '➕ Reis toevoegen'; ?>
                     </button>
-                    <?php if ($reis_bewerken): ?>
+                    <?php if ($reis_bewerken){ ?>
                         <a href="reizen.php" class="btn btn-secondary">Annuleren</a>
-                    <?php endif; ?>
+                    <?php } ?>
                 </div>
             </form>
         </div>
@@ -247,8 +247,8 @@ if (isset($_GET['bewerk_id'])) {
                             <?php foreach ($alle_reizen as $reis): ?>
                                 <tr>
                                     <td><?php echo $reis['id']; ?></td>
-                                    <td><strong><?php echo htmlspecialchars($reis['bestemming']); ?></strong></td>
-                                    <td><?php echo htmlspecialchars($reis['type_reis']); ?></td>
+                                    <td><strong><?php echo ($reis['bestemming']); ?></strong></td>
+                                    <td><?php echo ($reis['type_reis']); ?></td>
                                     <td class="prijs-cel">€ <?php echo number_format($reis['prijs'], 2, ',', '.'); ?></td>
                                     <td><?php echo date('d-m-Y', strtotime($reis['startdatum'])); ?></td>
                                     <td><?php echo date('d-m-Y', strtotime($reis['einddatum'])); ?></td>

@@ -3,7 +3,7 @@ session_start();
 require('db.php');
 
 // Haal de reis ID op uit de URL
-$reis_id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
+$reis_id = isset($_GET['id']) ? (int) $_GET['id'] : 0;
 
 // Als er geen id is, stuur terug naar reizen pagina
 if ($reis_id == 0) {
@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['actie']) && $_POST['a
         exit;
     }
 
-    $aantal_personen = (int)($_POST['aantal_personen'] ?? 1);
+    $aantal_personen = (int) ($_POST['aantal_personen'] ?? 1);
     $gebruiker_id = $_SESSION['gebruiker_id'];
 
     // Validatie
@@ -56,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['actie']) && $_POST['a
                 $stmt2 = $pdo->prepare("UPDATE reizen SET geboekt_personen = geboekt_personen + ? WHERE id = ?");
                 $stmt2->execute([$aantal_personen, $reis_id]);
 
-                $melding = 'Gefeliciteerd! Je hebt ' . $aantal_personen . ' plek(ken) geboekt voor ' . htmlspecialchars($reis['bestemming']) . '. Totaalprijs: € ' . number_format($totaal_prijs, 2, ',', '.');
+                $melding = 'Gefeliciteerd! Je hebt ' . $aantal_personen . ' plek(ken) geboekt voor ' . ($reis['bestemming']) . '. Totaalprijs: € ' . number_format($totaal_prijs, 2, ',', '.');
 
                 // Herlaad de reis zodat we de nieuwe beschikbaarheid zien
                 $stmt3 = $pdo->prepare("SELECT * FROM reizen WHERE id = ?");
@@ -76,7 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['actie']) && $_POST['a
         exit;
     }
 
-    $beoordeling = (int)($_POST['beoordeling'] ?? 0);
+    $beoordeling = (int) ($_POST['beoordeling'] ?? 0);
     $tekst = trim($_POST['tekst'] ?? '');
     $gebruiker_id = $_SESSION['gebruiker_id'];
 
@@ -123,21 +123,24 @@ $kleur = !empty($reis['kleur']) ? $reis['kleur'] : '#1b3a53';
 ?>
 <!DOCTYPE html>
 <html lang="nl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/stylesheet.css">
-    <title><?php echo htmlspecialchars($reis['bestemming']); ?> – Horizont Reizen</title>
+    <title><?php echo ($reis['bestemming']); ?> – Horizont Reizen</title>
 </head>
+
 <body>
     <?php require('includes/header.php'); ?>
 
-    <section class="detail-hero" style="background-color: <?php echo htmlspecialchars($kleur); ?>;">
+    <section class="detail-hero" style="background-color: <?php echo ($kleur); ?>;">
         <div class="detail-hero-content">
             <a href="reizen.php" class="detail-terug">← Terug naar reizen</a>
-            <span class="tag tag-default"><?php echo htmlspecialchars($reis['type_reis']); ?></span>
-            <h1><?php echo htmlspecialchars($reis['bestemming']); ?></h1>
-            <p><?php echo $aantal_nachten; ?> nachten · vanaf € <?php echo number_format($reis['prijs'], 2, ',', '.'); ?> p.p.</p>
+            <span class="tag tag-default"><?php echo ($reis['type_reis']); ?></span>
+            <h1><?php echo ($reis['bestemming']); ?></h1>
+            <p><?php echo $aantal_nachten; ?> nachten · vanaf €
+                <?php echo number_format($reis['prijs'], 2, ',', '.'); ?> p.p.</p>
         </div>
     </section>
 
@@ -147,16 +150,16 @@ $kleur = !empty($reis['kleur']) ? $reis['kleur'] : '#1b3a53';
             <!-- Linker kolom: info + reviews -->
             <div class="detail-left">
 
-                <?php if ($melding): ?>
+                <?php if ($melding) { ?>
                     <div class="alert alert-success"><?php echo $melding; ?></div>
-                <?php endif; ?>
-                <?php if ($fout): ?>
-                    <div class="alert alert-danger"><?php echo htmlspecialchars($fout); ?></div>
-                <?php endif; ?>
+                <?php } ?>
+                <?php if ($fout) { ?>
+                    <div class="alert alert-danger"><?php echo ($fout); ?></div>
+                <?php } ?>
 
                 <div class="detail-info-kaart">
                     <h2>Over deze reis</h2>
-                    <p><?php echo htmlspecialchars($reis['beschrijving']); ?></p>
+                    <p><?php echo ($reis['beschrijving']); ?></p>
 
                     <div class="detail-feiten">
                         <div class="detail-feit">
@@ -181,17 +184,18 @@ $kleur = !empty($reis['kleur']) ? $reis['kleur'] : '#1b3a53';
                 <!-- Recensies lezen -->
                 <div class="recensies-sectie">
                     <h2>Recensies
-                        <?php if (count($recensies) > 0): ?>
-                            <span class="recensie-gemiddelde">⭐ <?php echo $gemiddelde; ?> / 5 (<?php echo count($recensies); ?> recensies)</span>
-                        <?php endif; ?>
+                        <?php if (count($recensies) > 0) { ?>
+                            <span class="recensie-gemiddelde">⭐ <?php echo $gemiddelde; ?> / 5
+                                (<?php echo count($recensies); ?> recensies)</span>
+                        <?php } ?>
                     </h2>
 
-                    <?php if (count($recensies) > 0): ?>
+                    <?php if (count($recensies) > 0) { ?>
                         <div class="recensies-lijst">
-                            <?php foreach ($recensies as $recensie): ?>
+                            <?php foreach ($recensies as $recensie) { ?>
                                 <div class="recensie-kaart">
                                     <div class="recensie-header">
-                                        <strong><?php echo htmlspecialchars($recensie['voornaam'] . ' ' . $recensie['achternaam']); ?></strong>
+                                        <strong><?php echo ($recensie['voornaam'] . ' ' . $recensie['achternaam']); ?></strong>
                                         <span class="recensie-sterren">
                                             <?php
                                             // Toon sterren
@@ -200,18 +204,21 @@ $kleur = !empty($reis['kleur']) ? $reis['kleur'] : '#1b3a53';
                                             }
                                             ?>
                                         </span>
-                                        <span class="recensie-datum"><?php echo date('d-m-Y', strtotime($recensie['aangemaakt_op'])); ?></span>
+                                        <span
+                                            class="recensie-datum"><?php echo date('d-m-Y', strtotime($recensie['aangemaakt_op'])); ?></span>
                                     </div>
-                                    <p><?php echo htmlspecialchars($recensie['tekst']); ?></p>
+                                    <p><?php echo ($recensie['tekst']); ?></p>
                                 </div>
-                            <?php endforeach; ?>
+                            <?php } ?>
                         </div>
-                    <?php else: ?>
+                    <?php } else { ?>
                         <p class="geen-recensies">Er zijn nog geen recensies voor deze reis. Wees de eerste!</p>
-                    <?php endif; ?>
+                        <?php
+                    }
+                    ?>
 
                     <!-- Recensie plaatsen -->
-                    <?php if (isset($_SESSION['gebruiker_id'])): ?>
+                    <?php if (isset($_SESSION['gebruiker_id'])){ ?>
                         <div class="recensie-formulier">
                             <h3>Jouw recensie plaatsen</h3>
                             <form method="POST">
@@ -231,15 +238,16 @@ $kleur = !empty($reis['kleur']) ? $reis['kleur'] : '#1b3a53';
 
                                 <div class="form-group">
                                     <label for="tekst">Je recensie</label>
-                                    <textarea id="tekst" name="tekst" rows="4" placeholder="Schrijf hier je ervaring..." required></textarea>
+                                    <textarea id="tekst" name="tekst" rows="4" placeholder="Schrijf hier je ervaring..."
+                                        required></textarea>
                                 </div>
 
                                 <button type="submit" class="btn btn-primary">Recensie plaatsen</button>
                             </form>
                         </div>
-                    <?php else: ?>
+                    <?php }else{ ?>
                         <p class="login-prompt"><a href="login.php">Log in</a> om een recensie te plaatsen.</p>
-                    <?php endif; ?>
+                    <?php } ?>
                 </div>
             </div>
 
@@ -252,35 +260,37 @@ $kleur = !empty($reis['kleur']) ? $reis['kleur'] : '#1b3a53';
                         <span>per persoon</span>
                     </div>
 
-                    <?php if ($vrije_plaatsen > 0): ?>
-                        <?php if (isset($_SESSION['gebruiker_id'])): ?>
+                    <?php if ($vrije_plaatsen > 0){ ?>
+                        <?php if (isset($_SESSION['gebruiker_id'])){ ?>
                             <form method="POST" id="boek-form">
                                 <input type="hidden" name="actie" value="boeken">
 
                                 <div class="form-group">
                                     <label for="aantal_personen">Aantal personen</label>
                                     <select name="aantal_personen" id="aantal_personen">
-                                        <?php for ($i = 1; $i <= min(10, $vrije_plaatsen); $i++): ?>
-                                            <option value="<?php echo $i; ?>"><?php echo $i; ?> persoon<?php echo $i > 1 ? 'en' : ''; ?></option>
-                                        <?php endfor; ?>
+                                        <?php for ($i = 1; $i <= min(10, $vrije_plaatsen); $i++){ ?>
+                                            <option value="<?php echo $i; ?>"><?php echo $i; ?>
+                                                persoon<?php echo $i > 1 ? 'en' : ''; ?></option>
+                                        <?php } ?>
                                     </select>
                                 </div>
 
                                 <div class="totaal-prijs-preview" id="totaal-preview">
-                                    Totaal: <strong id="totaal-bedrag">€ <?php echo number_format($reis['prijs'], 2, ',', '.'); ?></strong>
+                                    Totaal: <strong id="totaal-bedrag">€
+                                        <?php echo number_format($reis['prijs'], 2, ',', '.'); ?></strong>
                                 </div>
 
                                 <button type="submit" class="btn btn-primary boeken-btn">Boek nu</button>
                             </form>
-                        <?php else: ?>
+                        <?php }else{ ?>
                             <p>Je moet ingelogd zijn om te boeken.</p>
                             <a href="login.php" class="btn btn-primary">Inloggen om te boeken</a>
-                        <?php endif; ?>
-                    <?php else: ?>
+                        <?php } ?>
+                    <?php }else{ ?>
                         <div class="volzet-melding">
                             <p>X Deze reis is helaas volzet.</p>
                         </div>
-                    <?php endif; ?>
+                    <?php } ?>
 
                     <div class="boeken-info">
                         <p>✓ Gratis annuleren binnen 24 uur</p>
@@ -302,7 +312,7 @@ $kleur = !empty($reis['kleur']) ? $reis['kleur'] : '#1b3a53';
         var totaalBedrag = document.getElementById('totaal-bedrag');
 
         if (aantalSelect) {
-            aantalSelect.addEventListener('change', function() {
+            aantalSelect.addEventListener('change', function () {
                 var aantal = parseInt(this.value);
                 var totaal = aantal * prijsPerPersoon;
                 totaalBedrag.textContent = '€ ' + totaal.toFixed(2).replace('.', ',');
@@ -310,4 +320,5 @@ $kleur = !empty($reis['kleur']) ? $reis['kleur'] : '#1b3a53';
         }
     </script>
 </body>
+
 </html>
