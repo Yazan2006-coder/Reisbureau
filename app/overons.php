@@ -31,8 +31,6 @@
             <h4>Betrouwbaar</h4>
             <p>ANVR-, SGR- en Calamiteitenfonds-aangesloten. Je geld is gewoon veilig.</p>
         </div>
-
-        <img src="Images/TFWCM.jpg" alt="Team Horizont">
     </section>
 
     <?php require('includes/footer.php'); ?>
