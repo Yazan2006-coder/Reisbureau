@@ -134,14 +134,11 @@ $kleur = !empty($reis['kleur']) ? $reis['kleur'] : '#1b3a53';
 <body>
     <?php require('includes/header.php'); ?>
 
-    <section class="detail-hero" style="background-color: <?php echo ($kleur); ?>;">
-        <div class="detail-hero-content">
-            <a href="reizen.php" class="detail-terug">← Terug naar reizen</a>
-            <span class="tag tag-default"><?php echo ($reis['type_reis']); ?></span>
-            <h1><?php echo ($reis['bestemming']); ?></h1>
-            <p><?php echo $aantal_nachten; ?> nachten · vanaf €
-                <?php echo number_format($reis['prijs'], 2, ',', '.'); ?> p.p.</p>
-        </div>
+    <section>
+        <a href="reizen.php" class="detail-terug">← Terug naar reizen</a>
+        <h1><?php echo ($reis['bestemming']); ?></h1>
+        <p><?php echo ($reis['type_reis']); ?> · <?php echo $aantal_nachten; ?> nachten · vanaf €
+            <?php echo number_format($reis['prijs'], 2, ',', '.'); ?> p.p.</p>
     </section>
 
     <section class="detail-main">

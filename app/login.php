@@ -56,47 +56,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
     <?php require('includes/header.php'); ?>
 
-    <section class="auth-page">
-        <div class="auth-container">
-            <h1 class="auth-title">Inloggen</h1>
+    <section>
+        <h1>Inloggen</h1>
 
-            <div class="auth-card">
-                <?php if ($fout !== ''){ ?>
-                    <div class="auth-melding auth-melding--fout">
-                        <p><?= ($fout) ?></p>
-                    </div>
-                <?php } ?>
+        <?php if ($fout !== ''){ ?>
+            <div class="alert alert-danger"><?= ($fout) ?></div>
+        <?php } ?>
 
-                <form action="login.php" method="POST">
-                    <div class="auth-form-group">
-                        <label for="email">E-mailadres</label>
-                        <input type="email" id="email" name="email"
-                               value="<?= ($oud_email) ?>" required autofocus>
-                    </div>
-
-                    <div class="auth-form-group">
-                        <label for="wachtwoord">Wachtwoord</label>
-                        <input type="password" id="wachtwoord" name="wachtwoord" required>
-                    </div>
-
-                    <div class="auth-options">
-                        <label class="auth-remember">
-                            <input type="checkbox" name="onthoud"> Onthoud mij
-                        </label>
-                        <a href="wachtwoord-vergeten.php" class="auth-forgot">Wachtwoord vergeten?</a>
-                    </div>
-
-                    <button type="submit" class="auth-btn">Inloggen</button>
-                </form>
-
-                <p class="auth-switch">Nog geen account? <a href="register.php">Account aanmaken</a></p>
-
-                <div class="demo-accounts">
-                    <p><strong>Demo-accounts:</strong></p>
-                    <p>Admin: testadmin@test.nl / test1234</p>
-                </div>
+        <form action="login.php" method="POST">
+            <div class="form-group">
+                <label for="email">E-mailadres</label>
+                <input type="email" id="email" name="email" value="<?= ($oud_email) ?>" required autofocus>
             </div>
-        </div>
+
+            <div class="form-group">
+                <label for="wachtwoord">Wachtwoord</label>
+                <input type="password" id="wachtwoord" name="wachtwoord" required>
+            </div>
+
+            <div class="form-group">
+                <label><input type="checkbox" name="onthoud"> Onthoud mij</label>
+            </div>
+
+            <button type="submit" class="auth-btn">Inloggen</button>
+        </form>
+
+        <p><a href="wachtwoord-vergeten.php">Wachtwoord vergeten?</a></p>
+        <p>Nog geen account? <a href="register.php">Account aanmaken</a></p>
+
+        <p><strong>Demo-account:</strong> testadmin@test.nl / test1234</p>
     </section>
 
     <?php require('includes/footer.php'); ?>

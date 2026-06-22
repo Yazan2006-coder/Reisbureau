@@ -39,35 +39,11 @@ $aantal_reizen = count($alle_reizen);
     <?php require('includes/header.php'); ?>
 
     <section class="search-section">
-        <form class="search-form" method="GET" action="reizen.php">
+        <form method="GET" action="reizen.php">
             <div class="form-group">
                 <label for="destination">Bestemming</label>
                 <input type="text" id="destination" name="bestemming" placeholder="Waar wil je heen?"
                     value="<?php echo ($zoek_bestemming); ?>">
-            </div>
-            <div class="form-group">
-                <label for="departure">Vertrek vanaf</label>
-                <input type="date" id="departure" name="vertrek">
-            </div>
-            <div class="form-group">
-                <label for="flexible">Flexibel</label>
-                <select id="flexible" name="flexibel">
-                    <option>Exacte datum</option>
-                    <option>± 1 dag</option>
-                    <option>± 3 dagen</option>
-                    <option>± 1 week</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="persons">Personen</label>
-                <select id="persons" name="personen">
-                    <option value="1">1</option>
-                    <option value="2" selected>2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6+</option>
-                </select>
             </div>
             <button type="submit" class="search-btn">Zoeken</button>
         </form>
@@ -168,25 +144,13 @@ $aantal_reizen = count($alle_reizen);
                                 $status = 'beschikbaar';
                             }
                             ?>
-                            <?php $kleur = !empty($reis['kleur']) ? $reis['kleur'] : '#1b3a53'; ?>
                             <div class="trip-card" data-type="<?php echo ($reis['type_reis']); ?>"
                                 data-prijs="<?php echo $reis['prijs']; ?>" data-status="<?php echo $status; ?>">
-                                <div class="trip-image" style="background-color: <?php echo ($kleur); ?>;">
-                                    <div class="trip-label"><?php echo strtoupper(($reis['bestemming'])); ?></div>
-                                </div>
-                                <div class="trip-tags">
-                                    <span class="tag tag-default"><?php echo ($reis['type_reis']); ?></span>
-                                    <?php echo $beschikbaarheid_tag; ?>
-                                </div>
                                 <h3><?php echo ($reis['bestemming']); ?></h3>
-                                <p class="trip-location">📍 <?php echo ($reis['bestemming']); ?> ·
-                                    <?php echo $aantal_nachten; ?>         <?php echo ($aantal_nachten == 1) ? 'nacht' : 'nachten'; ?>
-                                </p>
-                                <div class="trip-rating">★★★★★ 4.6</div>
-                                <div class="trip-price">vanaf <strong>€
-                                        <?php echo number_format($reis['prijs'], 2, ',', '.'); ?></strong> p.p.</div>
-                                <a href="reis-detail.php?id=<?php echo $reis['id']; ?>" class="btn btn-primary trip-btn">Bekijk
-                                    & boek</a>
+                                <p><?php echo ($reis['type_reis']); ?> · <?php echo $aantal_nachten; ?> nachten</p>
+                                <?php echo $beschikbaarheid_tag; ?>
+                                <p class="trip-price">vanaf <strong>€ <?php echo number_format($reis['prijs'], 2, ',', '.'); ?></strong> p.p.</p>
+                                <a href="reis-detail.php?id=<?php echo $reis['id']; ?>" class="btn btn-primary trip-btn">Bekijk &amp; boek</a>
                             </div>
                             <?php
                         }

@@ -78,55 +78,43 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
     <?php require('includes/header.php'); ?>
 
-    <section class="auth-page">
-        <div class="auth-container">
-            <h1 class="auth-title">Account aanmaken</h1>
+    <section>
+        <h1>Account aanmaken</h1>
 
-            <div class="auth-card">
-                <?php if (!empty($fouten)){ ?>
-                    <div class="auth-melding auth-melding--fout">
-                        <?php foreach ($fouten as $fout){ ?>
-                            <p><?= ($fout) ?></p>
-                        <?php } ?>
-                    </div>
+        <?php if (!empty($fouten)){ ?>
+            <div class="alert alert-danger">
+                <?php foreach ($fouten as $fout){ ?>
+                    <p><?= ($fout) ?></p>
                 <?php } ?>
-
-                <form action="register.php" method="POST">
-                    <div class="auth-form-row">
-                        <div class="auth-form-group">
-                            <label for="voornaam">Voornaam</label>
-                            <input type="text" id="voornaam" name="voornaam"
-                                   value="<?= ($oud['voornaam']) ?>" required>
-                        </div>
-                        <div class="auth-form-group">
-                            <label for="achternaam">Achternaam</label>
-                            <input type="text" id="achternaam" name="achternaam"
-                                   value="<?= ($oud['achternaam']) ?>" required>
-                        </div>
-                    </div>
-
-                    <div class="auth-form-group">
-                        <label for="email">E-mailadres</label>
-                        <input type="email" id="email" name="email"
-                               value="<?= ($oud['email']) ?>" required>
-                    </div>
-
-                    <div class="auth-form-group">
-                        <label for="wachtwoord">Wachtwoord</label>
-                        <input type="password" id="wachtwoord" name="wachtwoord" required>
-                    </div>
-
-                    <div class="auth-form-group">
-                        <label for="bevestig_wachtwoord">Bevestig wachtwoord</label>
-                        <input type="password" id="bevestig_wachtwoord" name="bevestig_wachtwoord" required>
-                    </div>
-
-                    <button type="submit" class="auth-btn">Account aanmaken</button>
-                </form>
-
-                <p class="auth-switch">Heb je al een account? <a href="login.php">Inloggen</a></p>
             </div>
-        </div>
+        <?php } ?>
+
+        <form action="register.php" method="POST">
+            <div class="form-group">
+                <label for="voornaam">Voornaam</label>
+                <input type="text" id="voornaam" name="voornaam" value="<?= ($oud['voornaam']) ?>" required>
+            </div>
+            <div class="form-group">
+                <label for="achternaam">Achternaam</label>
+                <input type="text" id="achternaam" name="achternaam" value="<?= ($oud['achternaam']) ?>" required>
+            </div>
+            <div class="form-group">
+                <label for="email">E-mailadres</label>
+                <input type="email" id="email" name="email" value="<?= ($oud['email']) ?>" required>
+            </div>
+            <div class="form-group">
+                <label for="wachtwoord">Wachtwoord</label>
+                <input type="password" id="wachtwoord" name="wachtwoord" required>
+            </div>
+            <div class="form-group">
+                <label for="bevestig_wachtwoord">Bevestig wachtwoord</label>
+                <input type="password" id="bevestig_wachtwoord" name="bevestig_wachtwoord" required>
+            </div>
+
+            <button type="submit" class="auth-btn">Account aanmaken</button>
+        </form>
+
+        <p>Heb je al een account? <a href="login.php">Inloggen</a></p>
     </section>
 
     <?php require('includes/footer.php'); ?>
