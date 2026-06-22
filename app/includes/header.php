@@ -2,10 +2,10 @@
         <div class="header-content">
             <div class="logo">Horizont Reizen</div>
             <nav class="nav">
-                <a href="/index.php" class="<?php echo (basename($_SERVER['PHP_SELF']) == 'index.php') ? 'nav-active' : ''; ?>">Home</a>
-                <a href="/reizen.php" class="<?php echo (basename($_SERVER['PHP_SELF']) == 'reizen.php') ? 'nav-active' : ''; ?>">Reizen</a>
-                <a href="/overons.php" class="<?php echo (basename($_SERVER['PHP_SELF']) == 'overons.php') ? 'nav-active' : ''; ?>">Over ons</a>
-                <a href="/contact.php" class="<?php echo (basename($_SERVER['PHP_SELF']) == 'contact.php') ? 'nav-active' : ''; ?>">Contact</a>
+                <a href="/index.php" class="header-btns">Home</a>
+                <a href="/reizen.php" class="header-btns">Reizen</a>
+                <a href="/overons.php" class="header-btns">Over ons</a>
+                <a href="/contact.php" class="header-btns">Contact</a>
             </nav>
             <div class="auth-buttons">
                 <?php if (isset($_SESSION['gebruiker_id'])){ ?>

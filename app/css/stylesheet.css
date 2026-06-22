@@ -38,6 +38,9 @@ img {
 .logo {
     font-size: 22px;
     font-weight: bold;
+    display: flex;
+    text-align: center;
+    justify-content: center;
 }
 
 .logo-tagline {
@@ -47,18 +50,20 @@ img {
 
 .nav {
     margin-top: 10px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
 }
 
 .nav a {
     margin-right: 15px;
 }
 
-.nav-active {
-    font-weight: bold;
-}
-
 .auth-buttons {
     margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .auth-buttons a {
@@ -327,4 +332,14 @@ textarea {
 
 .footer-links {
     list-style: none;
+}
+.header-btns{
+    display: inline-block;
+    background-color: #629dd8;
+    color: black;
+    border: 1px solid #568bc0;
+    padding: 8px 14px;
+    font-size: 14px;
+    text-decoration: none;
+    cursor: pointer;
 }
