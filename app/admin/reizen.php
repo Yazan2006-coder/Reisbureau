@@ -137,7 +137,7 @@ if (isset($_GET['bewerk_id'])) {
     <div class="admin-container">
         <div class="admin-header">
             <h1>🔧 Reizen beheren</h1>
-            <a href="../reizen.php">← Terug naar reizen</a>
+            <a class="btn" href="../reizen.php">← Terug naar reizen</a>
         </div>
         
         <?php if ($melding){?>
@@ -149,8 +149,8 @@ if (isset($_GET['bewerk_id'])) {
         <?php } ?>
         
         <!-- FORMULIER VOOR TOEVOEGEN / BEWERKEN -->
-        <div class="form-section">
-            <h2><?php echo $reis_bewerken ? 'Reis bewerken' : 'Nieuwe reis toevoegen'; ?></h2>
+        <div class="formulier">
+            <h2><?php echo $reis_bewerken ? 'Reis bewerken' : ''; ?></h2>
             
             <form method="POST">
                 <input type="hidden" name="actie" value="<?php echo $reis_bewerken ? 'bewerken' : 'toevoegen'; ?>">
@@ -206,12 +206,6 @@ if (isset($_GET['bewerk_id'])) {
                     </div>
                 </div>
                 
-                <div class="form-group">
-                    <label for="kleur">Kleur *</label>
-                    <input type="color" id="kleur" name="kleur" required
-                           value="<?php echo $reis_bewerken ? ($reis_bewerken['kleur']) : '#3498db'; ?>">
-                </div>
-                
                 <div class="form-buttons">
                     <button type="submit" class="btn btn-primary">
                         <?php echo $reis_bewerken ? 'Wijzigingen opslaan' : '+ Reis toevoegen'; ?>
@@ -225,10 +219,10 @@ if (isset($_GET['bewerk_id'])) {
         
         <!-- TABEL MET ALLE REIZEN -->
         <div class="table-section">
-            <h2>📋 Alle reizen (<?php echo count($alle_reizen); ?>)</h2>
+            <h2 class="admin-header">📋 Alle reizen (<?php echo count($alle_reizen); ?>)</h2>
             
             <?php if (count($alle_reizen) > 0): ?>
-                <div class="table-wrapper">
+                <div class="table">
                     <table class="reizen-table">
                         <thead>
                             <tr>

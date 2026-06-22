@@ -80,7 +80,26 @@ section {
     margin: 20px auto;
     padding: 0 15px;
 }
-
+.admin-header,
+.formulier{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.table{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.admin-header{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    margin-top: 25px;
+}
 /* Knoppen */
 button,
 .btn,
@@ -335,7 +354,6 @@ textarea {
 
 .footer-links {
     list-style: none;
-
 }
 .header-btns{
     display: inline-block;
