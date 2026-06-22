@@ -42,51 +42,41 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
     <?php require('includes/header.php'); ?>
-    <section class="contact-form">
-        <div class="contact-container">
-            <div class="contact-header">
-                <h2>Neem contact met ons op</h2>
-                <p>Heb je vragen over onze reizen? We helpen je graag!</p>
+    <section>
+        <h2>Neem contact met ons op</h2>
+        <p>Heb je vragen over onze reizen? We helpen je graag!</p>
+
+        <?php if ($melding){ ?>
+            <div class="alert alert-success"><?php echo ($melding); ?></div>
+        <?php } ?>
+        <?php if ($fout){ ?>
+            <div class="alert alert-danger"><?php echo ($fout); ?></div>
+        <?php } ?>
+
+        <form method="POST" action="contact.php" onsubmit="return verstuurFormulier()">
+            <div class="form-group">
+                <label for="name">Naam *</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">E-mailadres *</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Telefoonnummer</label>
+                <input type="tel" id="phone" name="phone">
+            </div>
+            <div class="form-group">
+                <label for="subject">Onderwerp *</label>
+                <input type="text" id="subject" name="subject" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Bericht *</label>
+                <textarea id="message" name="message" rows="6" required></textarea>
             </div>
 
-            <?php if ($melding){ ?>
-                <div class="alert alert-success"><?php echo ($melding); ?></div>
-            <?php } ?>
-            <?php if ($fout){ ?>
-                <div class="alert alert-danger"><?php echo ($fout); ?></div>
-            <?php } ?>
-
-            <form class="contact-form-content" method="POST" action="contact.php" onsubmit="return verstuurFormulier()">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="name">Naam *</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">E-mailadres *</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                </div>
-                
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="phone">Telefoonnummer</label>
-                        <input type="tel" id="phone" name="phone">
-                    </div>
-                    <div class="form-group">
-                        <label for="subject">Onderwerp *</label>
-                        <input type="text" id="subject" name="subject" required>
-                    </div>
-                </div>
-                
-                <div class="form-group full-width">
-                    <label for="message">Bericht *</label>
-                    <textarea id="message" name="message" rows="6" required></textarea>
-                </div>
-                
-                <button type="submit" class="contact-submit-btn">Verstuur bericht</button>
-            </form>
-        </div>
+            <button type="submit" class="contact-submit-btn">Verstuur bericht</button>
+        </form>
     </section>
     <script>
         function verstuurFormulier() {
