@@ -44,7 +44,6 @@
 
             <div class="overons-right">
                 <div class="team-image-wrapper">
-                    <img src="images/TFWCM.jpg" alt="Team Horizont Utrecht">
                     <div class="team-image-label">TEAM HORIZONT - UTRECHT</div>
                 </div>
 
