@@ -214,7 +214,7 @@ if (isset($_GET['bewerk_id'])) {
                 
                 <div class="form-buttons">
                     <button type="submit" class="btn btn-primary">
-                        <?php echo $reis_bewerken ? '💾 Wijzigingen opslaan' : '➕ Reis toevoegen'; ?>
+                        <?php echo $reis_bewerken ? 'Wijzigingen opslaan' : '+ Reis toevoegen'; ?>
                     </button>
                     <?php if ($reis_bewerken){ ?>
                         <a href="reizen.php" class="btn btn-secondary">Annuleren</a>
@@ -256,11 +256,11 @@ if (isset($_GET['bewerk_id'])) {
                                     <td><?php echo $reis['geboekt_personen']; ?> / <?php echo $reis['max_personen']; ?></td>
                                     <td>
                                         <div class="actie-knoppen">
-                                            <a href="reizen.php?bewerk_id=<?php echo $reis['id']; ?>" class="btn btn-edit">✏️ Bewerk</a>
+                                            <a href="reizen.php?bewerk_id=<?php echo $reis['id']; ?>" class="btn btn-edit">Bewerk</a>
                                             <form method="POST" class="delete-form" onsubmit="return confirm('Weet je zeker dat je deze reis wilt verwijderen?');">
                                                 <input type="hidden" name="actie" value="verwijderen">
                                                 <input type="hidden" name="reis_id" value="<?php echo $reis['id']; ?>">
-                                                <button type="submit">🗑️ Verwijder</button>
+                                                <button type="submit">Verwijder</button>
                                             </form>
                                         </div>
                                     </td>
