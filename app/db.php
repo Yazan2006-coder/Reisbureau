@@ -4,6 +4,7 @@ $dbname   = 'reisbureau';
 $username = 'root';
 $password = 'rootpassword';
 
+// Databaseverbinding maken
 try {
     $pdo = new PDO(
         "mysql:host=$host;dbname=$dbname;charset=utf8",

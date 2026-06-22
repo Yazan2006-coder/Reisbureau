@@ -9,6 +9,7 @@ $zoek_bestemming = trim($_GET['bestemming'] ?? '');
 if ($zoek_bestemming !== '') {
     $sql = "SELECT * FROM reizen WHERE actief = TRUE AND bestemming LIKE ? ORDER BY prijs ASC";
     $stmt = $pdo->prepare($sql);
+    // LIKE met % zoekt op een deel van het woord
     $stmt->execute(['%' . $zoek_bestemming . '%']);
 } else {
     $sql = "SELECT * FROM reizen WHERE actief = TRUE ORDER BY prijs ASC";

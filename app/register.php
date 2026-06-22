@@ -21,16 +21,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $oud = ['voornaam' => $voornaam, 'achternaam' => $achternaam, 'email' => $email];
 
-    // Validatie
+    // Validatie, foutmelding voor lege veld
     if ($voornaam === '')   $fouten[] = 'Voornaam is verplicht.';
     if ($achternaam === '') $fouten[] = 'Achternaam is verplicht.';
 
     if ($email === '') {
         $fouten[] = 'E-mailadres is verplicht.';
+        // Validatie, foutmelding voor ongeldig e-mailadres
     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $fouten[] = 'Voer een geldig e-mailadres in.';
     }
-
+    // Wachtwoord moet minstens 6 tekens zijn
     if (strlen($wachtwoord) < 6) {
         $fouten[] = 'Wachtwoord moet minimaal 6 tekens zijn.';
     } elseif ($wachtwoord !== $bevestig_wachtwoord) {
@@ -46,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
-    // Opslaan in database
+    // Opslaan in database, veilige hash van het wachtwoord
     if (empty($fouten)) {
         $hash = password_hash($wachtwoord, PASSWORD_BCRYPT);
         $stmt = $pdo->prepare(
