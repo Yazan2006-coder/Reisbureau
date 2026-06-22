@@ -190,14 +190,26 @@ $aantal_reizen = count($alle_reizen);
                             </div>
                             <?php
                         }
-                    } else {
-                        ?>
-                        <div class="no-reizen-message">
-                            <h3>Er zijn momenteel geen reizen beschikbaar</h3>
-                            <p>Kom later terug!</p>
-                        </div>
-                        <?php
+                    } 
+                    else {
+                        if ($zoek_bestemming !== '') {
+                            ?>
+                            <div class="no-reizen-message">
+                                <h3>Bestemming niet gevonden</h3>
+                                <p>"<?php echo ($zoek_bestemming); ?>" bestaat niet op onze website.</p>
+                                <a href="reizen.php">Bekijk alle reizen</a>
+                            </div>
+                            <?php
+                        } else {
+                            ?>
+                            <div class="no-reizen-message">
+                                <h3>Er zijn momenteel geen reizen beschikbaar</h3>
+                                <p>Kom later terug!</p>
+                            </div>
+                            <?php
+                        }
                     }
+
                     ?>
                 </div>
             </div>

@@ -30,7 +30,7 @@
 
                 <div class="waarde-item">
                     <h4>Persoonlijk</h4>
-                    <p>Elke boeking heeft Ã©Ã©n vast aanspreekpunt â€” voor, tijdens en na de reis.</p>
+                    <p>Elke boeking heeft een vast aanspreekpunt voor, tijdens en na de reis.</p>
                 </div>
                 <div class="waarde-item">
                     <h4>Verantwoord</h4>
@@ -45,7 +45,7 @@
             <div class="overons-right">
                 <div class="team-image-wrapper">
                     <img src="images/TFWCM.jpg" alt="Team Horizont Utrecht">
-                    <div class="team-image-label">TEAM HORIZONT â€” UTRECHT</div>
+                    <div class="team-image-label">TEAM HORIZONT - UTRECHT</div>
                 </div>
 
                 <div class="overons-stats">
