@@ -93,6 +93,15 @@ section {
     align-items: center;
     text-align: center;
 }
+.reizen-table{
+    border-collapse: separate;
+    border-spacing: 0 18px;
+}
+.reizen-table td,
+.reizen-table th{
+    padding: 14px 16px;
+    vertical-align: middle;
+}
 .admin-header{
     display: flex;
     justify-content: center;
@@ -120,6 +129,9 @@ button,
     cursor: pointer;
     margin-top: 5px;
 }
+.margin-left {
+    margin-left: 15px;
+}
 
 .btn-secondary {
     background-color: #888888;
@@ -129,6 +141,16 @@ button,
 .btn-danger {
     background-color: #aa3333;
     border-color: #882222;
+}
+
+.btn-delete {
+    background-color: #cc3333;
+    border-color: #992222;
+}
+
+.btn-edit {
+    background-color: #2e8b57;
+    border-color: #1f6e42;
 }
 
 /* Formulieren */

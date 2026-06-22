@@ -137,7 +137,7 @@ if (isset($_GET['bewerk_id'])) {
     <div class="admin-container">
         <div class="admin-header">
             <h1>🔧 Reizen beheren</h1>
-            <a class="btn" href="../reizen.php">← Terug naar reizen</a>
+            <a class="margin-left btn" href="../reizen.php">← Terug naar reizen</a>
         </div>
         
         <?php if ($melding){?>
@@ -254,7 +254,7 @@ if (isset($_GET['bewerk_id'])) {
                                             <form method="POST" class="delete-form" onsubmit="return confirm('Weet je zeker dat je deze reis wilt verwijderen?');">
                                                 <input type="hidden" name="actie" value="verwijderen">
                                                 <input type="hidden" name="reis_id" value="<?php echo $reis['id']; ?>">
-                                                <button type="submit">Verwijder</button>
+                                                <button type="submit" class="btn-delete">Verwijder</button>
                                             </form>
                                         </div>
                                     </td>
