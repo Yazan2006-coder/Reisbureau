@@ -180,15 +180,6 @@ $aantal_reizen = count($alle_reizen);
         </div>
     </section>
 
-    <?php
-    // Toon admin link als gebruiker admin is
-    if (isset($_SESSION['gebruiker_rol']) && $_SESSION['gebruiker_rol'] === 'admin'):
-        ?>
-        <section class="admin-link-section">
-            <a href="admin/reizen.php">→ Admin Panel: Reizen beheren</a>
-        </section>
-    <?php endif; ?>
-
     <?php require('includes/footer.php'); ?>
 
     <script>
