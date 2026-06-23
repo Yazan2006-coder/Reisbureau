@@ -198,7 +198,9 @@ textarea {
 .trips-grid,
 .offers-grid,
 .reizen-grid {
-    display: block;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 15px;
 }
 
 .trip-card,
@@ -398,4 +400,49 @@ textarea {
     font-size: 14px;
     text-decoration: none;
     cursor: pointer;
+}
+
+/* Tabellen scrollbaar op kleine schermen */
+.table {
+    width: 100%;
+    overflow-x: auto;
+}
+
+/* Tablet en kleiner: filter-sidebar boven de resultaten stapelen */
+@media (max-width: 768px) {
+    .reizen-container {
+        flex-direction: column;
+    }
+
+    .filters-sidebar {
+        flex: 1 1 auto;
+        width: 100%;
+    }
+
+    .nav,
+    .auth-buttons {
+        flex-wrap: wrap;
+    }
+}
+
+/* Telefoon: nav verticaal, minder padding */
+@media (max-width: 480px) {
+    .nav {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav a {
+        margin-right: 0;
+    }
+
+    .header,
+    .footer {
+        padding: 10px;
+    }
+
+    .benefit-item {
+        display: block;
+        margin-right: 0;
+    }
 }
