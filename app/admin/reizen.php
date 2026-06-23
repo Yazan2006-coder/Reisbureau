@@ -221,7 +221,7 @@ if (isset($_GET['bewerk_id'])) {
         <div class="table-section">
             <h2 class="admin-header">Alle reizen (<?php echo count($alle_reizen); ?>)</h2>
             
-            <?php if (count($alle_reizen) > 0): ?>
+            <?php if (count($alle_reizen) > 0){ ?>
                 <div class="table">
                     <table class="reizen-table">
                         <thead>
@@ -238,7 +238,7 @@ if (isset($_GET['bewerk_id'])) {
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($alle_reizen as $reis): ?>
+                            <?php foreach ($alle_reizen as $reis){ ?>
                                 <tr> <!-- Hier worden de gegevens van elke reis weergegeven in de tabel -->
                                     <td><?php echo $reis['id']; ?></td>
                                     <td><strong><?php echo ($reis['bestemming']); ?></strong></td>
@@ -262,15 +262,15 @@ if (isset($_GET['bewerk_id'])) {
                                         </div>
                                     </td>
                                 </tr>
-                            <?php endforeach; ?>
+                            <?php } ?>
                         </tbody>
                     </table>
                 </div>
-            <?php else: ?>
+            <?php }else{ ?>
                 <div class="empty-message">
                     <p>Er zijn momenteel geen reizen in de database.</p>
                 </div>
-            <?php endif; ?>
+            <?php } ?>
         </div>
     </div>
     
