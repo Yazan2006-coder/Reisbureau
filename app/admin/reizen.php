@@ -136,7 +136,7 @@ if (isset($_GET['bewerk_id'])) {
     
     <div class="admin-container">
         <div class="admin-header">
-            <h1>🔧 Reizen beheren</h1>
+            <h1>Reizen beheren</h1>
             <a class="margin-left btn" href="../reizen.php">← Terug naar reizen</a>
         </div>
         
@@ -219,9 +219,9 @@ if (isset($_GET['bewerk_id'])) {
         
         <!-- TABEL MET ALLE REIZEN -->
         <div class="table-section">
-            <h2 class="admin-header">📋 Alle reizen (<?php echo count($alle_reizen); ?>)</h2>
+            <h2 class="admin-header">Alle reizen (<?php echo count($alle_reizen); ?>)</h2>
             
-            <?php if (count($alle_reizen) > 0): ?>
+            <?php if (count($alle_reizen) > 0){ ?>
                 <div class="table">
                     <table class="reizen-table">
                         <thead>
@@ -238,17 +238,20 @@ if (isset($_GET['bewerk_id'])) {
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($alle_reizen as $reis): ?>
-                                <tr>
+                            <?php foreach ($alle_reizen as $reis){ ?>
+                                <tr> <!-- Hier worden de gegevens van elke reis weergegeven in de tabel -->
                                     <td><?php echo $reis['id']; ?></td>
                                     <td><strong><?php echo ($reis['bestemming']); ?></strong></td>
                                     <td><?php echo ($reis['type_reis']); ?></td>
                                     <td class="prijs-cel">€ <?php echo number_format($reis['prijs'], 2, ',', '.'); ?></td>
+                                    <!-- datum wordt hier in het juiste formaat weergegeven -->
                                     <td><?php echo date('d-m-Y', strtotime($reis['startdatum'])); ?></td>
                                     <td><?php echo date('d-m-Y', strtotime($reis['einddatum'])); ?></td>
+                                    <!-- aantal geboekte plaatsen wordt hier weergegeven -->    
                                     <td><?php echo $reis['max_personen']; ?></td>
-                                    <td><?php echo $reis['geboekt_personen']; ?> / <?php echo $reis['max_personen']; ?></td>
+                                    <td><?php echo $reis['geboekt_personen']; ?> / <?php echo $reis['max_personen']; ?></td> 
                                     <td>
+                                        <!-- Actieknoppen voor bewerken en verwijderen van de reis --> 
                                         <div class="actie-knoppen">
                                             <a href="reizen.php?bewerk_id=<?php echo $reis['id']; ?>" class="btn btn-edit">Bewerk</a>
                                             <form method="POST" class="delete-form" onsubmit="return confirm('Weet je zeker dat je deze reis wilt verwijderen?');">
@@ -259,15 +262,15 @@ if (isset($_GET['bewerk_id'])) {
                                         </div>
                                     </td>
                                 </tr>
-                            <?php endforeach; ?>
+                            <?php } ?>
                         </tbody>
                     </table>
                 </div>
-            <?php else: ?>
+            <?php }else{ ?>
                 <div class="empty-message">
                     <p>Er zijn momenteel geen reizen in de database.</p>
                 </div>
-            <?php endif; ?>
+            <?php } ?>
         </div>
     </div>
     
